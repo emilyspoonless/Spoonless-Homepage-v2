@@ -1,0 +1,1371 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Spoonless — Peanut butter finally got its act together. Premium drizzle condiment. Join the waitlist.">
+  <title>Spoonless — Peanut Butter Drizzle</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=DM+Sans:opsz,wght@9..40,300;9..40,400;9..40,500&family=Poppins:wght@700&display=swap" rel="stylesheet">
+  <style>
+    /* ─────────────────────────────────────────
+       DESIGN TOKENS
+    ───────────────────────────────────────── */
+    :root {
+      --roast:     #1C1410;
+      --walnut:    #3D1F0D;
+      --rust:      #E8622A;
+      --ember:     #C44B1B;
+      --golden:    #E8A020;
+      --cream:     #F5EDD8;
+      --dark-choc: #4A2C14;
+
+      --font-display: 'DM Serif Display', Georgia, serif;
+      --font-body:    'DM Sans', system-ui, sans-serif;
+
+      --hero-size:  clamp(3rem, 7.5vw, 7rem);
+      --h1-size:    clamp(2.25rem, 5vw, 4.5rem);
+      --h2-size:    clamp(1.75rem, 3.5vw, 3rem);
+      --xl-size:    clamp(1.1rem, 2vw, 1.5rem);
+      --lg-size:    clamp(1rem, 1.5vw, 1.2rem);
+      --base-size:  1rem;
+      --sm-size:    0.875rem;
+      --xs-size:    0.75rem;
+
+      --nav-h: 68px;
+      --pill:  999px;
+      --card-r: 14px;
+    }
+
+    /* ─────────────────────────────────────────
+       RESET
+    ───────────────────────────────────────── */
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; -webkit-font-smoothing: antialiased; }
+    body {
+      font-family: var(--font-body);
+      font-weight: 300;
+      background: var(--cream);
+      color: var(--roast);
+      overflow-x: hidden;
+    }
+    body.menu-open { overflow: hidden; }
+    a { color: inherit; text-decoration: none; }
+    button { border: none; background: none; cursor: pointer; font-family: var(--font-body); }
+    input { font-family: var(--font-body); }
+    img, svg { display: block; max-width: 100%; }
+
+    /* ─────────────────────────────────────────
+       SCROLL REVEAL
+    ───────────────────────────────────────── */
+    [data-reveal] {
+      opacity: 0;
+      transform: translateY(24px);
+      transition: opacity 0.65s ease, transform 0.65s ease;
+    }
+    [data-reveal].visible { opacity: 1; transform: translateY(0); }
+    [data-reveal][data-d="1"] { transition-delay: 0.1s; }
+    [data-reveal][data-d="2"] { transition-delay: 0.22s; }
+    [data-reveal][data-d="3"] { transition-delay: 0.38s; }
+    [data-reveal][data-d="4"] { transition-delay: 0.54s; }
+    [data-reveal][data-d="5"] { transition-delay: 0.7s; }
+
+    /* ─────────────────────────────────────────
+       UTILITIES
+    ───────────────────────────────────────── */
+    .sr-only {
+      position: absolute; width: 1px; height: 1px; padding: 0;
+      margin: -1px; overflow: hidden; clip: rect(0,0,0,0); white-space: nowrap; border: 0;
+    }
+    :focus-visible { outline: 2px solid var(--rust); outline-offset: 3px; border-radius: 3px; }
+
+    /* ─────────────────────────────────────────
+       BUTTONS
+    ───────────────────────────────────────── */
+    .btn {
+      display: inline-flex; align-items: center; justify-content: center;
+      font-family: var(--font-body); font-weight: 500; letter-spacing: 0.04em;
+      border-radius: var(--pill); cursor: pointer;
+      transition: background 0.2s, color 0.2s, transform 0.2s, box-shadow 0.2s;
+    }
+    .btn:hover { transform: translateY(-1px); }
+    .btn:active { transform: translateY(0); }
+    .btn-sm  { font-size: var(--sm-size);  padding: 0.55rem 1.2rem; height: 40px; }
+    .btn-md  { font-size: var(--base-size); padding: 0.75rem 1.75rem; height: 48px; }
+    .btn-lg  { font-size: 1.05rem; padding: 1rem 2.25rem; height: 56px; }
+    .btn-full { width: 100%; }
+    .btn-rust   { background: var(--rust);  color: var(--cream); }
+    .btn-rust:hover  { background: var(--ember); box-shadow: 0 6px 20px rgba(232,98,42,.35); }
+    .btn-golden { background: var(--golden); color: var(--roast); }
+    .btn-golden:hover { background: #d4921d; box-shadow: 0 6px 20px rgba(232,160,32,.35); }
+    .btn-cream  { background: var(--cream); color: var(--rust); }
+    .btn-cream:hover  { background: #ede4cc; }
+
+    /* ─────────────────────────────────────────
+       WAVE DIVIDER
+    ───────────────────────────────────────── */
+    .wave-wrap { display: block; line-height: 0; overflow: hidden; }
+    .wave-wrap svg { display: block; width: 100%; }
+
+    /* ─────────────────────────────────────────
+       PHOTO SLOT (placeholder system)
+    ───────────────────────────────────────── */
+    .slot {
+      position: relative; overflow: hidden;
+      background: linear-gradient(145deg, var(--walnut) 0%, #7a2e10 45%, var(--rust) 75%, var(--golden) 100%);
+    }
+    .slot-warm  { background: linear-gradient(155deg, #2a1005 0%, #7a2e10 40%, #C44B1B 80%, var(--golden) 100%); }
+    .slot-amber { background: linear-gradient(140deg, var(--rust) 0%, #d4891a 50%, #f7d080 100%); }
+    .slot-dark  { background: linear-gradient(150deg, #1C1410 0%, var(--dark-choc) 55%, #7a3010 100%); }
+    .slot-golden { background: linear-gradient(145deg, var(--dark-choc) 0%, #7a3010 45%, var(--golden) 100%); }
+    .slot-hero  { background: linear-gradient(160deg, #2a1005 0%, #7a2e10 35%, #C44B1B 65%, var(--golden) 100%); }
+    .slot__label {
+      position: absolute; bottom: 0; left: 0; right: 0;
+      padding: 0.75rem 1rem 0.6rem;
+      font-size: 0.65rem; font-weight: 300; color: rgba(245,237,216,.45);
+      background: linear-gradient(to top, rgba(28,20,16,.55) 0%, transparent 100%);
+      letter-spacing: 0.08em; text-transform: uppercase;
+    }
+
+    /* ─────────────────────────────────────────
+       NAVIGATION
+    ───────────────────────────────────────── */
+    .nav {
+      position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+      height: var(--nav-h);
+      display: flex; align-items: center;
+      padding: 0 clamp(1rem, 4vw, 3rem);
+      transition: background 0.4s, box-shadow 0.4s;
+    }
+    .nav::before {
+      content: ''; position: absolute; inset: 0; z-index: -1;
+      backdrop-filter: blur(18px); -webkit-backdrop-filter: blur(18px);
+      background: rgba(245,237,216,0);
+      transition: background 0.4s;
+    }
+    .nav.scrolled::before { background: rgba(245,237,216,.95); }
+    .nav.scrolled { box-shadow: 0 1px 0 rgba(28,20,16,.08); }
+
+    .nav__logo {
+      font-family: var(--font-body); font-weight: 500;
+      font-size: 1rem; letter-spacing: 0.2em; color: var(--rust);
+      text-transform: uppercase; white-space: nowrap;
+    }
+    .nav__links {
+      display: flex; align-items: center; justify-content: center;
+      gap: 2.5rem; flex: 1;
+    }
+    .nav__links a {
+      font-size: var(--sm-size); font-weight: 400; letter-spacing: 0.06em;
+      color: var(--walnut); transition: color 0.2s;
+    }
+    .nav__links a:hover { color: var(--rust); }
+    .nav__right { display: flex; justify-content: flex-end; margin-left: auto; }
+
+    /* hamburger */
+    .hamburger {
+      display: none; flex-direction: column; gap: 5px;
+      width: 32px; padding: 4px; cursor: pointer;
+      margin-left: auto;
+    }
+    .hamburger span {
+      display: block; height: 1.5px; background: var(--roast);
+      transition: transform 0.3s ease, opacity 0.3s ease;
+      transform-origin: center;
+    }
+    .nav.open .hamburger span:nth-child(1) { transform: translateY(6.5px) rotate(45deg); }
+    .nav.open .hamburger span:nth-child(2) { opacity: 0; }
+    .nav.open .hamburger span:nth-child(3) { transform: translateY(-6.5px) rotate(-45deg); }
+
+    /* mobile drawer */
+    .drawer {
+      position: fixed; inset: 0; z-index: 99;
+      background: var(--roast);
+      display: flex; flex-direction: column;
+      align-items: center; justify-content: center; gap: 2rem;
+      padding: 5rem 2rem 3rem;
+      transform: translateX(100%);
+      transition: transform 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+    }
+    .nav.open .drawer { transform: translateX(0); }
+    .drawer a {
+      font-family: var(--font-display); font-style: italic;
+      font-size: clamp(2rem, 8vw, 3.5rem); color: var(--cream);
+      transition: color 0.2s;
+    }
+    .drawer a:hover { color: var(--rust); }
+
+    /* ─────────────────────────────────────────
+       HERO
+    ───────────────────────────────────────── */
+    .hero {
+      position: relative;
+      min-height: 100svh; min-height: 100vh;
+      display: grid; grid-template-columns: 1fr 1fr;
+      overflow: hidden; padding-top: var(--nav-h);
+      background: var(--cream);
+    }
+    /* grain overlay */
+    .hero::after {
+      content: ''; position: absolute; inset: 0;
+      pointer-events: none; z-index: 4; opacity: 0.04;
+      background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+      background-size: 150px;
+    }
+    .hero__copy {
+      position: relative; z-index: 3;
+      display: flex; flex-direction: column; justify-content: center;
+      padding: var(--nav-h) clamp(1.5rem, 5vw, 4rem) 4rem clamp(1.5rem, 6vw, 5rem);
+      align-self: center;
+    }
+    .hero__eyebrow {
+      font-size: var(--xs-size); font-weight: 500;
+      letter-spacing: 0.22em; text-transform: uppercase;
+      color: var(--rust); margin-bottom: 1.5rem;
+    }
+    .hero__hl {
+      font-family: var(--font-display); font-style: italic;
+      font-size: var(--hero-size); line-height: 1.04;
+      color: var(--roast); margin-bottom: 1.75rem; max-width: 12ch;
+    }
+    .hero__sub {
+      font-size: var(--xl-size); font-weight: 300;
+      color: var(--walnut); line-height: 1.6;
+      max-width: 36ch; margin-bottom: 2.5rem;
+    }
+    .hero__photo {
+      position: relative; z-index: 1; min-height: 600px;
+      background: var(--cream);
+    }
+    .hero__img {
+      width: 100%; height: 100%;
+      object-fit: cover;
+      object-position: center 18%;
+      display: block;
+    }
+
+    /* SVG drizzle */
+    .drizzle-svg {
+      position: absolute; top: 0; left: 0;
+      width: 100%; height: 100%;
+      pointer-events: none; z-index: 5; overflow: visible;
+    }
+    .d-path {
+      fill: none; stroke-linecap: round;
+      stroke-dasharray: 1000;
+      stroke-dashoffset: 1000;
+    }
+    .d-main  { stroke: var(--rust);  stroke-width: 2.5; opacity: 0.5; }
+    .d-ghost { stroke: var(--golden); stroke-width: 1.5; opacity: 0.22; }
+    .d-ember { stroke: var(--ember); stroke-width: 1.5; opacity: 0.18; }
+
+    /* scroll cue */
+    .hero__scroll {
+      position: absolute; bottom: 2rem; left: 50%;
+      transform: translateX(-50%); z-index: 5;
+      display: flex; flex-direction: column; align-items: center; gap: 0.4rem;
+      color: var(--walnut); font-size: var(--xs-size);
+      letter-spacing: 0.18em; text-transform: uppercase;
+      opacity: 0.55; animation: bob 2.8s ease-in-out infinite;
+    }
+    @keyframes bob {
+      0%,100% { transform: translateX(-50%) translateY(0); }
+      50%      { transform: translateX(-50%) translateY(6px); }
+    }
+
+    /* ─────────────────────────────────────────
+       VALUE PROPS
+    ───────────────────────────────────────── */
+    .values {
+      background: var(--rust);
+      padding: 5rem clamp(1rem, 4vw, 2rem) 5rem;
+      position: relative;
+    }
+    .values__hl {
+      display: none;
+    }
+    .values__grid {
+      display: grid; grid-template-columns: repeat(4, 1fr);
+      max-width: 1100px; margin: 0 auto;
+    }
+    .value-item {
+      padding: 2.5rem 2rem;
+      border-right: 1px solid rgba(245,237,216,.15);
+      transition: all 0.25s;
+    }
+    .value-item:last-child { border-right: none; }
+    .value-item:hover .value-item__title { color: var(--roast); }
+    .value-item__icon {
+      width: 44px; height: 44px; margin-bottom: 1.5rem; color: var(--roast);
+    }
+    .value-item__title {
+      font-family: 'Poppins', system-ui, sans-serif; font-weight: 700;
+      font-size: 1.6rem; color: var(--cream);
+      margin-bottom: 0.75rem; line-height: 1.2;
+      transition: color 0.2s;
+    }
+    .value-item__copy {
+      font-size: 0.96rem; color: var(--cream);
+      line-height: 1.7; font-weight: 300;
+    }
+
+    /* ─────────────────────────────────────────
+       PRODUCTS
+    ───────────────────────────────────────── */
+    .products {
+      background: var(--cream);
+      padding: 6rem clamp(1rem, 4vw, 2rem);
+    }
+    .section-head {
+      text-align: center; margin-bottom: 4rem;
+    }
+    .section-head__eyebrow {
+      font-size: var(--xs-size); font-weight: 500;
+      letter-spacing: 0.22em; text-transform: uppercase;
+      color: var(--rust); margin-bottom: 1rem;
+    }
+    .section-head__title {
+      font-family: var(--font-display); font-style: italic;
+      font-size: var(--h1-size); color: var(--roast);
+      line-height: 1.08; margin-bottom: 0.75rem;
+    }
+    .section-head__sub {
+      font-size: var(--lg-size); font-weight: 300; color: var(--walnut);
+    }
+    .products__grid {
+      display: grid; grid-template-columns: 1fr 1fr;
+      gap: 1.5rem; max-width: 860px; margin: 0 auto 3rem;
+    }
+    .pcard {
+      border-radius: var(--card-r); overflow: hidden;
+      transition: transform 0.32s ease, box-shadow 0.32s ease; cursor: pointer;
+    }
+    .pcard:hover { transform: translateY(-6px) scale(1.012); }
+    .pcard--og {
+      background: var(--cream);
+      border: 1.5px solid rgba(232,98,42,.18);
+      box-shadow: 0 2px 24px rgba(232,98,42,.07);
+    }
+    .pcard--og:hover { box-shadow: 0 16px 44px rgba(232,98,42,.2); border-color: var(--rust); }
+    .pcard--choc {
+      background: var(--dark-choc);
+      box-shadow: 0 2px 24px rgba(28,20,16,.3);
+    }
+    .pcard--choc:hover { box-shadow: 0 16px 44px rgba(28,20,16,.5); }
+    .pcard__stripe { height: 4px; }
+    .pcard--og   .pcard__stripe { background: var(--rust); }
+    .pcard--choc .pcard__stripe { background: var(--golden); }
+    .pcard__body { padding: 2.5rem 2rem 2rem; }
+
+    /* CSS bottle art */
+    .bottle-wrap {
+      display: flex; justify-content: center; align-items: flex-end;
+      margin-bottom: 2rem; height: 180px; position: relative;
+    }
+    .btl {
+      display: flex; flex-direction: column-reverse; align-items: center;
+      position: relative;
+    }
+    .btl__tip {
+      width: 8px; height: 8px; border-radius: 0;
+    }
+    .pcard--og   .btl__tip  { background: var(--roast); }
+    .pcard--choc .btl__tip  { background: var(--golden); }
+    .btl__neck {
+      width: 26px; height: 22px;
+    }
+    .pcard--og   .btl__neck { background: rgba(232,98,42,.12); }
+    .pcard--choc .btl__neck { background: rgba(232,160,32,.18); }
+    .btl__body {
+      width: 68px; height: 130px;
+      border-radius: 18px 18px 10px 10px;
+      position: relative; overflow: hidden;
+    }
+    .pcard--og   .btl__body {
+      background: linear-gradient(175deg, #F5EDD8 0%, #e6d5b0 100%);
+      border: 1.5px solid rgba(232,98,42,.22);
+    }
+    .pcard--choc .btl__body {
+      background: linear-gradient(175deg, #5c3420 0%, #2a1208 100%);
+      border: 1.5px solid rgba(232,160,32,.28);
+    }
+    .btl__lbl {
+      position: absolute; inset: 14px 8px;
+      border-radius: 5px;
+      display: flex; align-items: center; justify-content: center;
+    }
+    .pcard--og   .btl__lbl { background: var(--cream); border: 1px solid rgba(232,98,42,.18); }
+    .pcard--choc .btl__lbl { background: rgba(245,237,216,.07); border: 1px solid rgba(232,160,32,.22); }
+    .btl__lbl-txt {
+      font-size: 6.5px; font-weight: 500; letter-spacing: 0.14em;
+      text-transform: uppercase; text-align: center; line-height: 1.65;
+    }
+    .pcard--og   .btl__lbl-txt { color: var(--rust); }
+    .pcard--choc .btl__lbl-txt { color: var(--golden); }
+    /* mini drizzle beside bottle */
+    .btl__drip {
+      position: absolute; right: -12px; top: 18px;
+    }
+
+    .pcard__pill {
+      display: inline-flex; align-items: center;
+      border-radius: var(--pill);
+      padding: 0.22rem 0.7rem;
+      font-size: 0.7rem; font-weight: 500;
+      letter-spacing: 0.1em; text-transform: uppercase;
+      margin-bottom: 1rem;
+    }
+    .pcard--og   .pcard__pill { background: var(--roast); color: var(--cream); }
+    .pcard--choc .pcard__pill { border: 1px solid var(--golden); color: var(--golden); }
+    .pcard__name {
+      font-family: var(--font-display); font-style: italic;
+      font-size: 1.9rem; line-height: 1.1; margin-bottom: 0.6rem;
+    }
+    .pcard--og   .pcard__name { color: var(--roast); }
+    .pcard--choc .pcard__name { color: var(--cream); }
+    .pcard__desc {
+      font-size: var(--sm-size); font-weight: 300;
+      line-height: 1.65; margin-bottom: 1.75rem;
+    }
+    .pcard--og   .pcard__desc { color: var(--walnut); }
+    .pcard--choc .pcard__desc { color: rgba(245,237,216,.72); }
+    .products__more {
+      display: block; text-align: center;
+      font-family: var(--font-display); font-style: italic;
+      font-size: 1.1rem; color: var(--rust);
+      transition: letter-spacing 0.2s, color 0.2s;
+    }
+    .products__more:hover { color: var(--ember); letter-spacing: 0.03em; }
+
+    /* ─────────────────────────────────────────
+       EDITORIAL GRID
+    ───────────────────────────────────────── */
+    .editorial { background: var(--cream); padding-bottom: 6rem; }
+    .editorial__head {
+      padding: 5rem clamp(1rem,4vw,3rem) 2.5rem;
+      max-width: 1200px; margin: 0 auto;
+    }
+    .editorial__eyebrow {
+      font-size: var(--xs-size); font-weight: 500;
+      letter-spacing: 0.22em; text-transform: uppercase;
+      color: var(--rust); margin-bottom: 1rem;
+    }
+    .editorial__title {
+      font-family: var(--font-display); font-style: italic;
+      font-size: var(--h2-size); color: var(--roast); line-height: 1.1;
+    }
+    .editorial__tiles {
+      display: grid; grid-template-columns: repeat(3, 1fr); gap: 4px;
+    }
+    .e-tile { position: relative; overflow: hidden; cursor: pointer; }
+    .e-tile .slot { aspect-ratio: 3/4; transition: transform 0.5s ease; }
+    .e-tile:hover .slot { transform: scale(1.04); }
+    .e-tile__overlay {
+      position: absolute; inset: 0;
+      background: linear-gradient(to top, rgba(28,20,16,.85) 0%, rgba(28,20,16,0) 55%);
+      display: flex; flex-direction: column; justify-content: flex-end;
+      padding: 1.5rem;
+      transform: translateY(100%);
+      transition: transform 0.38s cubic-bezier(.4,0,.2,1);
+    }
+    .e-tile:hover .e-tile__overlay { transform: translateY(0); }
+    .e-tile__cap { font-size: var(--base-size); color: var(--cream); line-height: 1.35; }
+    .e-tile__sub {
+      font-size: var(--xs-size); color: rgba(245,237,216,.6);
+      letter-spacing: 0.1em; text-transform: uppercase; margin-top: 0.3rem;
+    }
+    /* on touch / non-hover devices show overlay */
+    @media (hover: none) {
+      .e-tile__overlay { transform: translateY(0); }
+    }
+
+    /* ─────────────────────────────────────────
+       SOCIETY COLLAGE
+    ───────────────────────────────────────── */
+    .society { background: var(--walnut); position: relative; }
+    .society__top {
+      display: grid; grid-template-columns: 3fr 2fr; gap: 2px;
+    }
+    .soc-a { grid-column: 1; grid-row: 1 / 3; }
+    .soc-a .slot {
+      height: 100%; min-height: 520px;
+      background: linear-gradient(160deg, #1C1410 0%, #5c2810 45%, var(--rust) 100%);
+    }
+    .soc-b {
+      grid-column: 2; grid-row: 1;
+      background: var(--rust);
+      display: flex; align-items: center; justify-content: center;
+      padding: 3rem 2.5rem; min-height: 280px;
+    }
+    .soc-b blockquote {
+      font-family: var(--font-display); font-style: italic;
+      font-size: clamp(1.3rem, 2.8vw, 2.1rem);
+      color: var(--cream); line-height: 1.25; text-align: center;
+    }
+    .soc-c { grid-column: 2; grid-row: 2; }
+    .soc-c .slot {
+      height: 100%; min-height: 220px;
+      background: linear-gradient(145deg, #3D1F0D 0%, #7a3015 50%, #d4a040 100%);
+    }
+    .society__bot {
+      display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 2px;
+    }
+    .soc-d .slot {
+      aspect-ratio: 4/3;
+      background: linear-gradient(135deg, #2a1208 0%, #8B3A1A 60%, var(--rust) 100%);
+    }
+    .soc-e {
+      background: var(--cream);
+      display: flex; align-items: center; justify-content: center;
+      padding: 2rem 1.5rem;
+    }
+    .soc-e p {
+      font-family: var(--font-display); font-style: italic;
+      font-size: clamp(1rem,2.2vw,1.5rem);
+      color: var(--roast); text-align: center; line-height: 1.4;
+    }
+    .soc-f {
+      background: var(--roast);
+      padding: 2.5rem 2rem;
+      display: flex; flex-direction: column; justify-content: center;
+    }
+    .soc-f__title {
+      font-family: var(--font-display); font-style: italic;
+      font-size: 1.35rem; color: var(--cream); margin-bottom: 1rem;
+    }
+    .soc-f__body {
+      font-size: var(--sm-size); font-weight: 300;
+      color: rgba(245,237,216,.6); line-height: 1.75;
+    }
+    /* hover rust border on image cells */
+    .soc-a, .soc-c, .soc-d {
+      position: relative; overflow: hidden; cursor: pointer;
+    }
+    .soc-a::after, .soc-c::after, .soc-d::after {
+      content: ''; position: absolute; inset: 0;
+      border: 0px solid var(--rust);
+      transition: border-width 0.2s; pointer-events: none; z-index: 5;
+    }
+    .soc-a:hover::after, .soc-c:hover::after, .soc-d:hover::after {
+      border-width: 3px;
+    }
+
+    /* ─────────────────────────────────────────
+       WAITLIST
+    ───────────────────────────────────────── */
+    .waitlist {
+      background: var(--rust); position: relative;
+      padding: 7rem clamp(1rem,4vw,2rem) 6rem;
+      text-align: center; overflow: hidden;
+    }
+    .waitlist__inner { max-width: 540px; margin: 0 auto; position: relative; z-index: 2; }
+    .waitlist__eyebrow {
+      font-size: var(--xs-size); font-weight: 500;
+      letter-spacing: 0.22em; text-transform: uppercase;
+      color: rgba(245,237,216,.65); margin-bottom: 1rem;
+    }
+    .waitlist__hl {
+      font-family: var(--font-display); font-style: italic;
+      font-size: var(--h1-size); color: var(--cream);
+      line-height: 1.08; margin-bottom: 1.25rem;
+    }
+    .waitlist__sub {
+      font-size: var(--lg-size); font-weight: 300;
+      color: rgba(245,237,216,.82); line-height: 1.6; margin-bottom: 2.5rem;
+    }
+    .waitlist__form {
+      display: flex; max-width: 440px; margin: 0 auto 1rem;
+    }
+    .waitlist__input {
+      flex: 1; height: 56px; padding: 0 1.5rem;
+      background: var(--cream); border: none;
+      border-radius: 8px 0 0 8px;
+      font-size: var(--base-size); color: var(--roast);
+      outline: none; transition: box-shadow 0.2s;
+    }
+    .waitlist__input::placeholder { color: rgba(61,31,13,.38); }
+    .waitlist__input:focus { outline: none; box-shadow: none; }
+    .waitlist__btn {
+      width: 56px; height: 56px; flex-shrink: 0;
+      background: var(--roast); color: var(--cream);
+      border-radius: 0 8px 8px 0;
+      font-size: 1.4rem; display: flex; align-items: center; justify-content: center;
+      transition: background 0.2s;
+    }
+    .waitlist__btn:hover { background: var(--walnut); }
+    .waitlist__micro {
+      font-size: var(--xs-size); font-style: italic; font-weight: 300;
+      color: var(--roast); letter-spacing: 0.06em;
+    }
+
+    /* ─────────────────────────────────────────
+       FOOTER
+    ───────────────────────────────────────── */
+    .footer { background: var(--cream); }
+    .footer__top {
+      display: flex; align-items: center; justify-content: space-between;
+      flex-wrap: wrap; gap: 1.5rem;
+      padding: 3rem clamp(1rem,4vw,3rem) 2.5rem;
+      border-bottom: none;
+    }
+    .footer__wm {
+      font-family: var(--font-body); font-weight: 500;
+      font-size: clamp(2rem,5.5vw,4rem);
+      letter-spacing: 0.22em; color: var(--rust);
+      text-transform: uppercase; line-height: 1;
+    }
+    .footer__tag {
+      font-family: var(--font-display); font-style: italic;
+      font-size: clamp(.95rem,1.8vw,1.3rem);
+      color: var(--roast);
+      max-width: 280px; text-align: right; line-height: 1.5;
+    }
+    .footer__cols {
+      display: grid; grid-template-columns: repeat(3,1fr);
+      gap: 3rem; padding: 3rem clamp(1rem,4vw,3rem);
+      border-bottom: none;
+    }
+    .footer__col-title {
+      font-size: var(--xs-size); font-weight: 500;
+      letter-spacing: 0.2em; text-transform: uppercase;
+      color: var(--rust); margin-bottom: 1.25rem;
+    }
+    .footer__col-body {
+      font-size: var(--sm-size); font-weight: 300;
+      color: var(--roast); line-height: 1.8;
+    }
+    .footer__col-body a {
+      display: block; color: var(--roast);
+      transition: color 0.2s; margin-bottom: 0.1rem;
+    }
+    .footer__col-body a:hover { color: var(--roast); opacity: 0.7; }
+    .footer__base {
+      padding: 1.5rem clamp(1rem,4vw,3rem);
+      text-align: center;
+      font-size: var(--xs-size); font-weight: 300;
+      color: var(--roast); letter-spacing: 0.08em;
+    }
+
+    /* ─────────────────────────────────────────
+       MOBILE STICKY CTA
+    ───────────────────────────────────────── */
+    .sticky {
+      display: none;
+      position: fixed; bottom: 0; left: 0; right: 0; z-index: 90;
+      padding: 0.75rem 1rem calc(0.75rem + env(safe-area-inset-bottom));
+      background: var(--rust);
+      transform: translateY(100%);
+      transition: transform 0.35s cubic-bezier(.4,0,.2,1);
+      box-shadow: 0 -4px 20px rgba(232,98,42,.3);
+    }
+    .sticky.show { transform: translateY(0); }
+
+    /* ─────────────────────────────────────────
+       RESPONSIVE
+    ───────────────────────────────────────── */
+    @media (max-width: 960px) {
+      .nav__links { display: none; }
+      .nav__right  { display: none; }
+      .hamburger   { display: flex; }
+
+      .hero { grid-template-columns: 1fr; }
+      .hero__photo {
+        position: absolute; inset: 0; min-height: unset; z-index: 1;
+      }
+      .hero__img {
+        width: 100%; height: 100%;
+        object-fit: cover;
+        object-position: 62% center;
+      }
+      .hero__copy {
+        z-index: 3; min-height: 100svh; min-height: 100vh;
+        padding-top: calc(var(--nav-h) + 2rem);
+        justify-content: center;
+        background: linear-gradient(to right,
+          rgba(245,237,216,.92) 0%,
+          rgba(245,237,216,.75) 55%,
+          transparent 100%);
+      }
+
+      .values__grid { grid-template-columns: repeat(2,1fr); }
+      .value-item { border-right: none; border-bottom: 1px solid rgba(232,98,42,.15); }
+      .value-item:nth-last-child(-n+2) { border-bottom: none; }
+
+      .products__grid { grid-template-columns: 1fr; max-width: 400px; }
+
+      .editorial__tiles { grid-template-columns: 1fr; }
+      .e-tile .slot { aspect-ratio: 16/9; }
+
+      .society__top { grid-template-columns: 1fr 1fr; }
+      .society__bot { grid-template-columns: 1fr 1fr; }
+      .soc-f { grid-column: 1 / -1; }
+
+      .footer__cols { grid-template-columns: 1fr 1fr; }
+      .sticky { display: block; }
+    }
+
+    @media (max-width: 600px) {
+      :root { --nav-h: 60px; }
+      .nav { padding: 0 1rem; }
+      .nav__logo { font-size: 0.88rem; }
+
+      .hero__copy {
+        background: rgba(245,237,216,.87);
+        padding: calc(var(--nav-h) + 1.5rem) 1.25rem 5rem;
+      }
+      .hero__sub { font-size: 1rem; }
+
+      .values { padding: 4rem 1rem 5rem; }
+      .values__grid { grid-template-columns: 1fr; }
+      .value-item:last-child { border-bottom: none; }
+
+      .society__top { grid-template-columns: 1fr; }
+      .soc-a { grid-row: auto; }
+      .soc-b, .soc-c { grid-column: 1; }
+      .society__bot { grid-template-columns: 1fr; }
+
+      .waitlist__form { flex-direction: column; }
+      .waitlist__input { border-radius: 8px; width: 100%; }
+      .waitlist__btn { width: 100%; border-radius: 8px; height: 52px; font-size: 1rem; }
+
+      .footer__top { flex-direction: column; align-items: flex-start; }
+      .footer__tag { text-align: left; }
+      .footer__cols { grid-template-columns: 1fr; gap: 2rem; }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      *, *::before, *::after {
+        animation-duration: 0.01ms !important;
+        transition-duration: 0.01ms !important;
+      }
+      [data-reveal] { opacity: 1; transform: none; }
+    }
+  </style>
+</head>
+
+<body>
+
+<!-- ══════════════════════════════
+     NAV
+══════════════════════════════ -->
+<nav class="nav" id="nav">
+  <a href="#" class="nav__logo">Spoonless</a>
+
+  <div class="nav__links">
+    <a href="#products">Products</a>
+    <a href="#society">Our Story</a>
+    <a href="#waitlist">Waitlist</a>
+  </div>
+
+  <div class="nav__right">
+    <a href="#waitlist" class="btn btn-rust btn-sm">Join the Waitlist</a>
+  </div>
+
+  <button class="hamburger" id="hamburger" aria-label="Toggle menu" aria-expanded="false">
+    <span></span><span></span><span></span>
+  </button>
+
+  <!-- mobile drawer (inside nav for class toggling) -->
+  <div class="drawer" id="drawer" aria-hidden="true">
+    <a href="#products" class="d-link">Products</a>
+    <a href="#society"  class="d-link">Our Story</a>
+    <a href="#waitlist" class="d-link">Waitlist</a>
+    <a href="#waitlist" class="btn btn-rust btn-lg" style="margin-top:1rem;">Join the Waitlist</a>
+  </div>
+</nav>
+
+
+<!-- ══════════════════════════════
+     HERO
+══════════════════════════════ -->
+<section class="hero" id="hero">
+
+  <div class="hero__copy">
+    <p class="hero__eyebrow" data-reveal data-d="1">Coming Soon</p>
+    <h1 class="hero__hl" data-reveal data-d="2">
+      The peanut butter you love, designed to drizzle.
+    </h1>
+    <p class="hero__sub" data-reveal data-d="3">
+      Clean label. Zero mess. Are you ready?
+    </p>
+    <div data-reveal data-d="4">
+      <a href="#waitlist" class="btn btn-rust btn-lg">
+        Join the Waitlist
+      </a>
+    </div>
+  </div>
+
+  <div class="hero__photo">
+    <img
+      src="hero-product.png"
+      alt="Spoonless peanut butter drizzle bottle, inverted, with peanut butter pooling below the cap"
+      class="hero__img"
+    >
+
+    <svg class="drizzle-svg" viewBox="0 0 600 900" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+      <path id="d1" class="d-path d-ghost"
+        d="M 420 -30 C 390 70, 470 150, 430 240 C 390 330, 280 360, 310 460 C 340 560, 460 580, 440 680 C 420 780, 290 810, 320 930"/>
+      <path id="d2" class="d-path d-main"
+        d="M 180 -30 C 230 90, 120 180, 170 290 C 220 400, 370 420, 330 530 C 290 640, 130 660, 170 770 C 210 880, 380 910, 340 1000"/>
+      <path id="d3" class="d-path d-ember"
+        d="M 510 80 C 530 180, 460 260, 480 360 C 500 460, 570 500, 550 600 C 530 700, 440 740, 460 840"/>
+    </svg>
+  </div>
+
+  <div class="hero__scroll" aria-hidden="true">
+    <span>Scroll</span>
+    <svg width="14" height="14" viewBox="0 0 24 24" fill="none"
+         stroke="currentColor" stroke-width="2.5" stroke-linecap="round">
+      <path d="M12 5v14M5 12l7 7 7-7"/>
+    </svg>
+  </div>
+
+</section>
+
+
+<!-- ══════════════════════════════
+     WAVE · cream → rust
+══════════════════════════════ -->
+<div class="wave-wrap" aria-hidden="true">
+  <svg viewBox="0 0 1440 60" preserveAspectRatio="none" xmlns="http://www.w3.org/2000/svg">
+    <rect width="1440" height="60" fill="#E8622A"/>
+    <path d="M0,32 C360,60 1080,0 1440,36 L1440,60 L0,60 Z" fill="#E8622A"/>
+  </svg>
+</div>
+
+
+<!-- ══════════════════════════════
+     VALUE PROPS
+══════════════════════════════ -->
+<section class="values" aria-label="Why Spoonless">
+
+  <h2 class="values__hl" data-reveal>Why the format matters.</h2>
+
+  <div class="values__grid">
+
+    <div class="value-item" data-reveal data-d="1">
+      <svg class="value-item__icon" viewBox="0 0 44 44" fill="none"
+           stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+        <!-- inverted squeeze bottle (cap at bottom) -->
+        <path d="M17 2 L27 2 L29 6 L29 32 Q29 38 23 38 L21 38 Q15 38 15 32 L15 6 Z"/>
+        <path d="M21 38 L23 38 Q24 38 24 40 L24 42 L20 42 L20 40 Q20 38 21 38"/>
+        <line x1="17" y1="14" x2="27" y2="14"/>
+        <line x1="17" y1="20" x2="27" y2="20"/>
+        <path d="M29 26 L36 22 C38 20 38 18 36 18 C34 18 32 20 33 23 C34 26 36 26 36 22"/>
+      </svg>
+      <h3 class="value-item__title">Zero Friction</h3>
+      <p class="value-item__copy">No jar to stir. No knife to clean. Peanut butter, exactly where you want it.</p>
+    </div>
+
+    <div class="value-item" data-reveal data-d="2">
+      <svg class="value-item__icon" viewBox="0 0 44 44" fill="none"
+           stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+        <!-- two leaves / minimal ingredients -->
+        <path d="M22 38 L22 16"/>
+        <path d="M22 28 C18 24 10 22 10 14 C10 9 14 8 18 10 C20 11 22 13 22 16"/>
+        <path d="M22 22 C26 18 34 16 34 8 C34 4 30 4 26 6 C24 7 22 10 22 16"/>
+        <line x1="16" y1="40" x2="28" y2="40"/>
+      </svg>
+      <h3 class="value-item__title">Nothing Weird</h3>
+      <p class="value-item__copy">Peanut butter, as it should be - with minimal ingredients, mostly peanuts.</p>
+    </div>
+
+    <div class="value-item" data-reveal data-d="3">
+      <svg class="value-item__icon" viewBox="0 0 44 44" fill="none"
+           stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+        <!-- drizzle swirl / joy -->
+        <path d="M22 10 C30 10 36 16 36 22 C36 30 30 36 22 36 C14 36 8 30 8 22"/>
+        <path d="M22 16 C26 16 30 19 30 22 C30 27 26 30 22 30"/>
+        <path d="M8 22 C8 18 10 15 13 14"/>
+        <path d="M22 22 L35 8"/>
+        <circle cx="35" cy="8" r="2.5" fill="currentColor" stroke="none"/>
+      </svg>
+      <h3 class="value-item__title">Pure Joy</h3>
+      <p class="value-item__copy">Designed for delight, not just nutrition. Drizzling it is half the fun.</p>
+    </div>
+
+    <div class="value-item" data-reveal data-d="4">
+      <svg class="value-item__icon" viewBox="0 0 44 44" fill="none"
+           stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+        <!-- inverted squeeze bottle (cap at bottom) -->
+        <path d="M17 2 L27 2 L29 6 L29 32 Q29 38 23 38 L21 38 Q15 38 15 32 L15 6 Z"/>
+        <path d="M21 38 L23 38 Q24 38 24 40 L24 42 L20 42 L20 40 Q20 38 21 38"/>
+        <line x1="17" y1="14" x2="27" y2="14"/>
+        <line x1="17" y1="20" x2="27" y2="20"/>
+      </svg>
+      <h3 class="value-item__title">Premium Format</h3>
+      <p class="value-item__copy">Condiment shelf energy. Recyclable, ready, and worth keeping on the counter.</p>
+    </div>
+
+  </div>
+</section>
+
+
+<!-- ══════════════════════════════
+     WAVE · rust → cream
+══════════════════════════════ -->
+<div class="wave-wrap" aria-hidden="true">
+  <svg viewBox="0 0 1440 60" preserveAspectRatio="none" xmlns="http://www.w3.org/2000/svg">
+    <rect width="1440" height="60" fill="#E8622A"/>
+    <path d="M0,28 C480,60 960,0 1440,32 L1440,60 L0,60 Z" fill="#E8622A"/>
+  </svg>
+</div>
+
+
+<!-- ══════════════════════════════
+     PRODUCTS
+══════════════════════════════ -->
+<section class="products" id="products" aria-label="Products">
+
+  <div class="section-head" data-reveal>
+    <p class="section-head__eyebrow">The Lineup</p>
+    <h2 class="section-head__title">Meet the drizzle.</h2>
+    <p class="section-head__sub">Same peanut butter. Two moods.</p>
+  </div>
+
+  <div class="products__grid">
+
+    <!-- The Original -->
+    <article class="pcard pcard--og" data-reveal data-d="1">
+      <div class="pcard__stripe"></div>
+      <div class="pcard__body">
+        <div class="bottle-wrap" aria-hidden="true">
+          <div class="btl">
+            <div class="btl__tip"></div>
+            <div class="btl__neck"></div>
+            <div class="btl__body">
+              <div class="btl__lbl">
+                <div class="btl__lbl-txt">SPOON<br>LESS<br>—<br>OG</div>
+              </div>
+            </div>
+          </div>
+          <svg class="btl__drip" width="36" height="90" viewBox="0 0 36 90" fill="none">
+            <path id="drip1"
+              d="M5 0 C16 18, -4 36, 10 54 C22 70, 6 80, 14 90"
+              stroke="#E8622A" stroke-width="2" stroke-linecap="round"/>
+          </svg>
+        </div>
+        <span class="pcard__pill">Original</span>
+        <h3 class="pcard__name">The Original</h3>
+        <p class="pcard__desc">12 oz · Peanuts. Salt. That's it.<br>The one that started everything.</p>
+        <a href="#waitlist" class="btn btn-rust btn-md btn-full">Join the Waitlist</a>
+      </div>
+    </article>
+
+    <!-- The Chocolate -->
+    <article class="pcard pcard--choc" data-reveal data-d="2">
+      <div class="pcard__stripe"></div>
+      <div class="pcard__body">
+        <div class="bottle-wrap" aria-hidden="true">
+          <div class="btl">
+            <div class="btl__tip"></div>
+            <div class="btl__neck"></div>
+            <div class="btl__body">
+              <div class="btl__lbl">
+                <div class="btl__lbl-txt">SPOON<br>LESS<br>—<br>CHOC</div>
+              </div>
+            </div>
+          </div>
+          <svg class="btl__drip" width="36" height="90" viewBox="0 0 36 90" fill="none">
+            <path id="drip2"
+              d="M5 0 C16 18, -4 36, 10 54 C22 70, 6 80, 14 90"
+              stroke="#E8A020" stroke-width="2" stroke-linecap="round"/>
+          </svg>
+        </div>
+        <span class="pcard__pill">Hazelnut Cacao</span>
+        <h3 class="pcard__name">The Chocolate</h3>
+        <p class="pcard__desc">12 oz · Hazelnut + cacao.<br>Peanut butter, but a little extra.</p>
+        <a href="#waitlist" class="btn btn-golden btn-md btn-full">Join the Waitlist</a>
+      </div>
+    </article>
+
+  </div>
+
+  <a href="#" class="products__more" data-reveal>View Full Product Details →</a>
+
+</section>
+
+
+<!-- ══════════════════════════════
+     EDITORIAL GRID
+══════════════════════════════ -->
+<section class="editorial" aria-label="Where it drizzles">
+
+  <div class="editorial__head">
+    <p class="editorial__eyebrow" data-reveal>No Spoon? No Problem.</p>
+    <h2 class="editorial__title" data-reveal data-d="1">Where it drizzles.</h2>
+  </div>
+
+  <div class="editorial__tiles">
+
+    <div class="e-tile" data-reveal>
+      <div class="slot slot-warm">
+        <div class="slot__label">Spicy red chicken wings</div>
+      </div>
+      <div class="e-tile__overlay" aria-hidden="true">
+        <p class="e-tile__cap">Spicy wings, dangerous drizzle</p>
+        <p class="e-tile__sub">The Original</p>
+      </div>
+    </div>
+
+    <div class="e-tile" data-reveal data-d="1">
+      <div class="slot slot-amber">
+        <div class="slot__label">Morning waffle bowl</div>
+      </div>
+      <div class="e-tile__overlay" aria-hidden="true">
+        <p class="e-tile__cap">Morning waffle, perfect zigzag</p>
+        <p class="e-tile__sub">The Original</p>
+      </div>
+    </div>
+
+    <div class="e-tile" data-reveal data-d="2">
+      <div class="slot slot-golden">
+        <div class="slot__label">Cheese &amp; fruit board</div>
+      </div>
+      <div class="e-tile__overlay" aria-hidden="true">
+        <p class="e-tile__cap">Cheese board, elevated</p>
+        <p class="e-tile__sub">The Chocolate</p>
+      </div>
+    </div>
+
+  </div>
+
+</section>
+
+
+<!-- ══════════════════════════════
+     WAVE · cream → walnut
+══════════════════════════════ -->
+<div class="wave-wrap" aria-hidden="true">
+  <svg viewBox="0 0 1440 60" preserveAspectRatio="none" xmlns="http://www.w3.org/2000/svg">
+    <rect width="1440" height="60" fill="#F5EDD8"/>
+    <path d="M0,24 C360,60 1080,0 1440,30 L1440,60 L0,60 Z" fill="#3D1F0D"/>
+  </svg>
+</div>
+
+
+<!-- ══════════════════════════════
+     SOCIETY COLLAGE
+══════════════════════════════ -->
+<section class="society" id="society" aria-label="The Spoonless Society">
+
+  <div class="society__top">
+    <div class="soc-a">
+      <div class="slot" data-photo="The Ritual Optimizer: squeezing Spoonless into morning blender — 6:45 AM">
+        <div class="slot__label">The Ritual Optimizer — 6:45 AM</div>
+      </div>
+    </div>
+    <div class="soc-b" data-reveal>
+      <blockquote>
+        "Finally, peanut butter that knows it's a topping."
+      </blockquote>
+    </div>
+    <div class="soc-c">
+      <div class="slot" style="background:linear-gradient(145deg,#3D1F0D 0%,#7a3015 50%,#d4a040 100%); height:100%; min-height:220px;">
+        <div class="slot__label">The Considered Indulger — Sunday Morning</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="society__bot">
+    <div class="soc-d">
+      <div class="slot" style="background:linear-gradient(135deg,#2a1208 0%,#8B3A1A 60%,var(--rust) 100%);">
+        <div class="slot__label">The Standard-Keeper — Lunch Prep</div>
+      </div>
+    </div>
+    <div class="soc-e" data-reveal>
+      <p>For peanut butter lovers, finally.</p>
+    </div>
+    <div class="soc-f" data-reveal>
+      <h3 class="soc-f__title">The Spoonless Society</h3>
+      <p class="soc-f__body">
+        For the optimizer clocking macros at 6am. For the indulger with $60 olive oil on the counter.
+        For the standard-keeper who refuses mediocre peanut butter. You already knew it was a topping.
+        We just made the bottle for it.
+      </p>
+    </div>
+  </div>
+
+</section>
+
+
+<!-- ══════════════════════════════
+     WAVE · walnut → rust
+══════════════════════════════ -->
+<div class="wave-wrap" aria-hidden="true">
+  <svg viewBox="0 0 1440 60" preserveAspectRatio="none" xmlns="http://www.w3.org/2000/svg">
+    <rect width="1440" height="60" fill="#E8622A"/>
+    <path d="M0,30 C480,60 960,0 1440,28 L1440,60 L0,60 Z" fill="#E8622A"/>
+  </svg>
+</div>
+
+
+<!-- ══════════════════════════════
+     WAITLIST
+══════════════════════════════ -->
+<section class="waitlist" id="waitlist" aria-label="Join the waitlist">
+  <div class="waitlist__inner">
+    <p class="waitlist__eyebrow" data-reveal>Coming Soon</p>
+    <h2 class="waitlist__hl" data-reveal data-d="1">Don't miss out.</h2>
+    <p class="waitlist__sub" data-reveal data-d="2">
+      We'll let you know when it's time to drizzle.<br>No spoons required.
+    </p>
+
+    <form class="waitlist__form" id="wl-form" data-reveal data-d="3" novalidate>
+      <label for="wl-email" class="sr-only">Email address</label>
+      <input
+        type="email" id="wl-email" class="waitlist__input"
+        placeholder="your@email.com"
+        autocomplete="email" required aria-required="true"
+      >
+      <button type="submit" class="waitlist__btn" id="wl-btn" aria-label="Join waitlist">
+        <span id="wl-icon">→</span>
+      </button>
+    </form>
+
+    <div id="wl-status" aria-live="polite" aria-atomic="true" class="sr-only"></div>
+    <p class="waitlist__micro" data-reveal data-d="4">Subscribe now.</p>
+  </div>
+</section>
+
+
+<!-- ══════════════════════════════
+     WAVE · rust → roast
+══════════════════════════════ -->
+<div class="wave-wrap" aria-hidden="true">
+  <svg viewBox="0 0 1440 56" preserveAspectRatio="none" xmlns="http://www.w3.org/2000/svg">
+    <rect width="1440" height="56" fill="#E8622A"/>
+    <path d="M0,22 C360,56 1080,0 1440,26 L1440,56 L0,56 Z" fill="#F5EDD8"/>
+  </svg>
+</div>
+
+
+<!-- ══════════════════════════════
+     FOOTER
+══════════════════════════════ -->
+<footer class="footer" role="contentinfo">
+  <div class="footer__top">
+    <a href="#" class="footer__wm">Spoonless</a>
+  </div>
+  <div class="footer__cols">
+    <div>
+      <p class="footer__col-title">About</p>
+      <div class="footer__col-body">
+      </div>
+    </div>
+    <div>
+      <p class="footer__col-title">Products</p>
+      <div class="footer__col-body">
+        <a href="#products">The Original</a>
+        <a href="#products">The Chocolate</a>
+        <a href="#">More SKUs Coming</a>
+      </div>
+    </div>
+    <div>
+      <p class="footer__col-title">Connect</p>
+      <div class="footer__col-body">
+        <a href="#">Instagram</a>
+        <a href="#">TikTok</a>
+        <a href="mailto:hello@spoonless.com">hello@spoonless.com</a>
+      </div>
+    </div>
+  </div>
+  <p class="footer__base">Spoonless © 2026</p>
+</footer>
+
+
+<!-- ══════════════════════════════
+     STICKY MOBILE CTA
+══════════════════════════════ -->
+<div class="sticky" id="sticky" aria-hidden="true">
+  <a href="#waitlist" class="btn btn-cream btn-full" style="height:52px;border-radius:8px;font-size:1rem;">
+    Join the Waitlist →
+  </a>
+</div>
+
+
+<!-- ══════════════════════════════
+     JAVASCRIPT
+══════════════════════════════ -->
+<script>
+(function() {
+  'use strict';
+
+  // ── HERO DRIZZLE ANIMATION ─────────────────────────
+  function animateDrizzles() {
+    [
+      { id: 'd2', delay: 300,  dur: 2600 },
+      { id: 'd1', delay: 700,  dur: 2200 },
+      { id: 'd3', delay: 1100, dur: 1800 }
+    ].forEach(({ id, delay, dur }) => {
+      const path = document.getElementById(id);
+      if (!path) return;
+      const len = path.getTotalLength();
+      path.style.strokeDasharray  = len;
+      path.style.strokeDashoffset = len;
+      setTimeout(() => {
+        path.style.transition = `stroke-dashoffset ${dur}ms cubic-bezier(0.4,0,0.2,1)`;
+        path.style.strokeDashoffset = '0';
+      }, delay);
+    });
+  }
+
+  // ── PRODUCT CARD MINI DRIZZLES ─────────────────────
+  function initMiniDrizzles() {
+    ['drip1','drip2'].forEach((id, i) => {
+      const path = document.getElementById(id);
+      if (!path) return;
+      const len = path.getTotalLength();
+      path.style.strokeDasharray  = len;
+      path.style.strokeDashoffset = len;
+      const card = path.closest('.pcard');
+      if (!card) return;
+      const obs = new IntersectionObserver(entries => {
+        if (entries[0].isIntersecting) {
+          setTimeout(() => {
+            path.style.transition = 'stroke-dashoffset 1.2s cubic-bezier(0.4,0,0.2,1)';
+            path.style.strokeDashoffset = '0';
+          }, 300 + i * 150);
+          obs.disconnect();
+        }
+      }, { threshold: 0.4 });
+      obs.observe(card);
+    });
+  }
+
+  // ── SCROLL REVEAL ──────────────────────────────────
+  function initReveal() {
+    // Hero items: trigger immediately (above fold)
+    document.querySelectorAll('.hero [data-reveal]').forEach(el => {
+      const d = parseInt(el.dataset.d || 0);
+      setTimeout(() => el.classList.add('visible'), 200 + d * 160);
+    });
+    // Everything else: IntersectionObserver
+    const rest = Array.from(document.querySelectorAll('[data-reveal]'))
+      .filter(el => !el.closest('.hero'));
+    const obs = new IntersectionObserver(entries => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('visible');
+          obs.unobserve(entry.target);
+        }
+      });
+    }, { threshold: 0.1, rootMargin: '0px 0px -40px 0px' });
+    rest.forEach(el => obs.observe(el));
+  }
+
+  // ── NAV SCROLL STATE ───────────────────────────────
+  function initNav() {
+    const nav  = document.getElementById('nav');
+    const hero = document.getElementById('hero');
+    const obs = new IntersectionObserver(entries => {
+      nav.classList.toggle('scrolled', !entries[0].isIntersecting);
+    }, { threshold: 0 });
+    if (hero) obs.observe(hero);
+  }
+
+  // ── MOBILE NAV DRAWER ─────────────────────────────
+  function initDrawer() {
+    const nav    = document.getElementById('nav');
+    const btn    = document.getElementById('hamburger');
+    const drawer = document.getElementById('drawer');
+
+    function close() {
+      nav.classList.remove('open');
+      btn.setAttribute('aria-expanded', 'false');
+      drawer.setAttribute('aria-hidden', 'true');
+      document.body.classList.remove('menu-open');
+    }
+
+    btn.addEventListener('click', () => {
+      const open = nav.classList.toggle('open');
+      btn.setAttribute('aria-expanded', open);
+      drawer.setAttribute('aria-hidden', !open);
+      document.body.classList.toggle('menu-open', open);
+    });
+
+    drawer.querySelectorAll('a').forEach(a => a.addEventListener('click', close));
+
+    document.addEventListener('keydown', e => {
+      if (e.key === 'Escape' && nav.classList.contains('open')) {
+        close(); btn.focus();
+      }
+    });
+  }
+
+  // ── STICKY CTA ─────────────────────────────────────
+  function initSticky() {
+    const sticky   = document.getElementById('sticky');
+    const hero     = document.getElementById('hero');
+    const waitlist = document.getElementById('waitlist');
+    if (!sticky || !hero) return;
+
+    const heroObs = new IntersectionObserver(entries => {
+      const showing = !entries[0].isIntersecting;
+      sticky.classList.toggle('show', showing);
+      sticky.setAttribute('aria-hidden', !showing);
+    }, { threshold: 0 });
+    heroObs.observe(hero);
+
+    if (waitlist) {
+      const wlObs = new IntersectionObserver(entries => {
+        if (entries[0].isIntersecting) {
+          sticky.classList.remove('show');
+          sticky.setAttribute('aria-hidden', 'true');
+        }
+      }, { threshold: 0.2 });
+      wlObs.observe(waitlist);
+    }
+  }
+
+  // ── WAITLIST FORM ──────────────────────────────────
+  function initForm() {
+    const form   = document.getElementById('wl-form');
+    const input  = document.getElementById('wl-email');
+    const btn    = document.getElementById('wl-btn');
+    const icon   = document.getElementById('wl-icon');
+    const status = document.getElementById('wl-status');
+
+    function setDone() {
+      form.classList.add('done');
+      input.value = "You're on the list.";
+      input.setAttribute('readonly', true);
+      input.style.color = 'rgba(61,31,13,0.5)';
+      icon.textContent = '✓';
+      btn.style.background = '#3D1F0D';
+      status.textContent = "You're on the waitlist! We'll reach out when it's time.";
+    }
+
+    // Persist state
+    if (localStorage.getItem('spoonless_wl')) setDone();
+
+    form.addEventListener('submit', e => {
+      e.preventDefault();
+      const email = input.value.trim();
+      if (!email || !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) {
+        input.style.boxShadow = 'inset 0 0 0 2px rgba(28,20,16,0.5)';
+        setTimeout(() => { input.style.boxShadow = ''; }, 1600);
+        return;
+      }
+      // Production: POST to Klaviyo / Mailchimp here
+      localStorage.setItem('spoonless_wl', email);
+      setDone();
+    });
+  }
+
+  // ── INIT ───────────────────────────────────────────
+  document.addEventListener('DOMContentLoaded', () => {
+    animateDrizzles();
+    initReveal();
+    initNav();
+    initDrawer();
+    initSticky();
+    initForm();
+    initMiniDrizzles();
+  });
+})();
+</script>
+
+</body>
+</html>
