@@ -552,6 +552,138 @@
     }
 
     /* ─────────────────────────────────────────
+       MOMENTS CAROUSEL
+    ───────────────────────────────────────── */
+    .moments {
+      background: var(--walnut);
+      padding: 5rem clamp(1rem, 4vw, 2rem) 6rem;
+      position: relative;
+    }
+    .moments__title {
+      font-family: var(--font-display); font-style: italic;
+      font-size: var(--h2-size); color: var(--cream);
+      text-align: center; margin-bottom: 4rem; line-height: 1.2;
+    }
+    .moments__container {
+      display: grid; grid-template-columns: 1fr 1fr; gap: 4rem;
+      max-width: 1200px; margin: 0 auto 5rem;
+      min-height: 500px;
+    }
+    .moments__image {
+      background: linear-gradient(135deg, #3D1F0D 0%, #E8622A 50%, #E8A020 100%);
+      border-radius: 12px; overflow: hidden;
+      position: relative; display: flex; align-items: center; justify-content: center;
+    }
+    .moments__img {
+      width: 100%; height: 100%; object-fit: cover; object-position: center;
+    }
+    .moments__content {
+      display: flex; flex-direction: column; justify-content: center;
+      animation: fadeInSlide 0.6s ease-out;
+    }
+    .moments__label {
+      font-size: var(--xs-size); font-weight: 500;
+      letter-spacing: 0.22em; text-transform: uppercase;
+      color: var(--rust); margin-bottom: 1rem;
+      animation: fadeInSlide 0.6s ease-out 0.1s both;
+    }
+    .moments__headline {
+      font-family: var(--font-display); font-style: italic;
+      font-size: var(--h2-size); color: var(--cream);
+      margin-bottom: 1.5rem; line-height: 1.1;
+      animation: fadeInSlide 0.6s ease-out 0.15s both;
+    }
+    .moments__copy {
+      font-size: var(--lg-size); font-weight: 300;
+      color: rgba(245,237,216,.85); line-height: 1.8;
+      animation: fadeInSlide 0.6s ease-out 0.2s both;
+    }
+    @keyframes fadeInSlide {
+      from { opacity: 0; transform: translateX(12px); }
+      to { opacity: 1; transform: translateX(0); }
+    }
+
+    /* Timeline Navigation */
+    .moments__timeline {
+      display: flex; align-items: center; justify-content: center;
+      gap: 1.5rem; max-width: 1000px; margin: 0 auto;
+      overflow-x: auto; padding: 1rem 0;
+    }
+    .moments__arrow {
+      font-size: 1.5rem; color: var(--rust);
+      background: none; border: none; cursor: pointer;
+      transition: opacity 0.2s;
+      flex-shrink: 0; padding: 0.5rem;
+    }
+    .moments__arrow:hover { opacity: 0.6; }
+    .moments__arrow--prev, .moments__arrow--next { display: none; }
+    @media (max-width: 960px) {
+      .moments__arrow { display: block; }
+    }
+
+    .moments__dots-wrapper {
+      display: flex; gap: 1rem; align-items: center;
+      overflow-x: auto; flex: 1; justify-content: center;
+      scroll-behavior: smooth;
+    }
+    .moments__dot {
+      width: 44px; height: 44px; border-radius: 50%;
+      background: rgba(232, 98, 42, 0.2);
+      border: 2px solid var(--rust);
+      cursor: pointer; position: relative;
+      display: flex; align-items: center; justify-content: center;
+      flex-shrink: 0; transition: background 0.3s;
+      font-size: 0.5rem; color: var(--cream);
+    }
+    .moments__dot.active {
+      background: var(--rust);
+      box-shadow: 0 0 0 4px rgba(232, 98, 42, 0.3);
+    }
+    .moments__dot-icon {
+      font-size: 1.2rem; line-height: 1;
+    }
+    .moments__countdown {
+      position: absolute; inset: -3px;
+      border-radius: 50%;
+    }
+    .moments__countdown circle {
+      transform: rotate(-90deg);
+      transform-origin: center;
+      stroke-dasharray: 130; stroke-dashoffset: 0;
+      transition: stroke-dashoffset 5s linear;
+    }
+    .moments__countdown circle.animating {
+      stroke-dashoffset: 130;
+    }
+
+    .moments__dot--label {
+      position: absolute; bottom: -28px;
+      font-size: 0.7rem; font-weight: 500;
+      letter-spacing: 0.08em; text-transform: uppercase;
+      color: var(--cream); white-space: nowrap;
+      text-align: center; width: 60px;
+      pointer-events: none;
+    }
+
+    @media (max-width: 960px) {
+      .moments {
+        padding: 4rem clamp(1rem, 4vw, 2rem);
+      }
+      .moments__container {
+        grid-template-columns: 1fr;
+        gap: 2rem; min-height: auto;
+        margin-bottom: 4rem;
+      }
+      .moments__title {
+        font-size: clamp(1.5rem, 3vw, 2.5rem);
+        margin-bottom: 2rem;
+      }
+      .moments__headline {
+        font-size: clamp(1.5rem, 3vw, 2rem);
+      }
+    }
+
+    /* ─────────────────────────────────────────
        WAITLIST
     ───────────────────────────────────────── */
     .waitlist {
@@ -1046,7 +1178,38 @@
 
 
 <!-- ══════════════════════════════
-     SOCIETY COLLAGE
+     MOMENTS CAROUSEL
+══════════════════════════════ -->
+<section class="moments" id="moments" aria-label="Spoonless Moments">
+  <h2 class="moments__title" data-reveal>One Drizzle. Endless Possibilities</h2>
+
+  <div class="moments__container" id="moments-container">
+    <!-- Image Placeholder -->
+    <div class="moments__image" id="moments-image">
+      <img src="yogurt-bowl.png" alt="Breakfast moment - yogurt bowl with Spoonless drizzle" class="moments__img">
+    </div>
+
+    <!-- Content -->
+    <div class="moments__content">
+      <p class="moments__label" id="moments-label">Breakfast</p>
+      <h3 class="moments__headline" id="moments-headline">Quick. Easy. Energizing.</h3>
+      <p class="moments__copy" id="moments-copy">Start your morning right with a protein-packed breakfast bowl — drizzled generously over yogurt, granola, and fresh berries.</p>
+    </div>
+  </div>
+
+  <!-- Timeline Navigation -->
+  <div class="moments__timeline" id="moments-timeline">
+    <button class="moments__arrow moments__arrow--prev" id="moments-prev" aria-label="Previous moment">←</button>
+
+    <div class="moments__dots-wrapper" id="moments-dots-wrapper">
+      <!-- Dots generated by JavaScript -->
+    </div>
+
+    <button class="moments__arrow moments__arrow--next" id="moments-next" aria-label="Next moment">→</button>
+  </div>
+</section>
+
+
 ══════════════════════════════ -->
 <section class="society" id="society" aria-label="The Spoonless Society">
 
@@ -1319,6 +1482,239 @@
     }
   }
 
+  // ── MOMENTS CAROUSEL ──────────────────────────────────
+  function initMomentsCarousel() {
+    const moments = [
+      {
+        label: 'Breakfast',
+        headline: 'Quick. Easy. Energizing.',
+        copy: 'Start your morning right with a protein-packed breakfast bowl — drizzled generously over yogurt, granola, and fresh berries.',
+        image: 'yogurt-bowl.png'
+      },
+      {
+        label: 'After-School',
+        headline: 'Fuel the Second Wind.',
+        copy: 'That 3pm slump doesn\'t stand a chance. Spoonless drizzled over crackers and cheese hits different.'
+      },
+      {
+        label: 'On the Go',
+        headline: 'No Spoon Required.',
+        copy: 'Straight from the bottle into your mouth. No mess, no cleanup, pure satisfaction whenever you need it.'
+      },
+      {
+        label: 'Easy Lunch',
+        headline: 'Lunchbox Power.',
+        copy: 'Make your packed lunch the envy of the office. Drizzle over apple slices for the perfect sweet-savory moment.'
+      },
+      {
+        label: '5PM Pick Me Up',
+        headline: 'The Productivity Hack.',
+        copy: 'That 5pm energy crash? Handled. Spoonless gives you the protein boost and joy you need to finish strong.'
+      },
+      {
+        label: 'Easy Snack',
+        headline: 'Snacking Evolved.',
+        copy: 'Ditch the protein bar. Spoonless over banana slices, pretzels, or straight — because snacking should be delicious.'
+      },
+      {
+        label: 'Post Workout',
+        headline: 'Recovery Tastes Good.',
+        copy: 'Refuel smart. High protein, zero guilt. Drizzle it over toast or combine with chocolate for the perfect recovery treat.'
+      },
+      {
+        label: 'Late Night Snack',
+        headline: 'The Midnight Solution.',
+        copy: 'When cravings strike at 11pm, reach for Spoonless. No sugar crash, no regrets — just pure comfort.'
+      }
+    ];
+
+    let currentIndex = 0;
+    let isPaused = false;
+    let autoPlayTimer = null;
+    let countdownTimeout = null;
+
+    const container = document.getElementById('moments-container');
+    const label = document.getElementById('moments-label');
+    const headline = document.getElementById('moments-headline');
+    const copy = document.getElementById('moments-copy');
+    const image = document.getElementById('moments-image');
+    const dotsWrapper = document.getElementById('moments-dots-wrapper');
+    const prevBtn = document.getElementById('moments-prev');
+    const nextBtn = document.getElementById('moments-next');
+
+    // Create dots
+    moments.forEach((m, i) => {
+      const dot = document.createElement('button');
+      dot.className = 'moments__dot' + (i === 0 ? ' active' : '');
+      dot.setAttribute('aria-label', `Go to ${m.label}`);
+      dot.setAttribute('data-index', i);
+
+      const svg = document.createElementNS('http://www.w3.org/2000/svg', 'svg');
+      svg.setAttribute('class', 'moments__countdown');
+      svg.setAttribute('viewBox', '0 0 44 44');
+      svg.setAttribute('width', '44');
+      svg.setAttribute('height', '44');
+
+      const circle = document.createElementNS('http://www.w3.org/2000/svg', 'circle');
+      circle.setAttribute('cx', '22');
+      circle.setAttribute('cy', '22');
+      circle.setAttribute('r', '20');
+      circle.setAttribute('fill', 'none');
+      circle.setAttribute('stroke', '#E8622A');
+      circle.setAttribute('stroke-width', '2');
+
+      svg.appendChild(circle);
+      dot.appendChild(svg);
+
+      const iconSpan = document.createElement('span');
+      iconSpan.className = 'moments__dot-icon';
+      iconSpan.textContent = '⏸'; // Pause icon
+      dot.appendChild(iconSpan);
+
+      const label = document.createElement('span');
+      label.className = 'moments__dot--label';
+      label.textContent = m.label;
+      dot.appendChild(label);
+
+      dot.addEventListener('click', () => goToMoment(i));
+      dotsWrapper.appendChild(dot);
+    });
+
+    function updateContent(index) {
+      const moment = moments[index];
+      const isFirst = index === 0;
+
+      // Update text content
+      label.textContent = moment.label;
+      headline.textContent = moment.headline;
+      copy.textContent = moment.copy;
+
+      // Update image if exists, otherwise show placeholder
+      if (moment.image) {
+        image.innerHTML = `<img src="${moment.image}" alt="${moment.label} moment" class="moments__img">`;
+      } else {
+        image.innerHTML = '';
+      }
+
+      // Update dots
+      const dots = dotsWrapper.querySelectorAll('.moments__dot');
+      dots.forEach((d, i) => {
+        d.classList.toggle('active', i === index);
+        const icon = d.querySelector('.moments__dot-icon');
+        icon.textContent = (i === index && isPaused) ? '▶' : (i === index ? '⏸' : '');
+      });
+
+      // Trigger animations
+      container.style.animation = 'none';
+      setTimeout(() => {
+        container.style.animation = 'fadeInSlide 0.6s ease-out';
+      }, 10);
+    }
+
+    function animateCountdown(dotIndex) {
+      const dot = dotsWrapper.querySelectorAll('.moments__dot')[dotIndex];
+      if (!dot) return;
+
+      const circle = dot.querySelector('circle');
+      if (!circle) return;
+
+      circle.classList.remove('animating');
+      void circle.offsetWidth; // Trigger reflow
+      circle.classList.add('animating');
+    }
+
+    function startAutoPlay() {
+      if (isPaused) return;
+
+      clearTimeout(countdownTimeout);
+      animateCountdown(currentIndex);
+
+      autoPlayTimer = setTimeout(() => {
+        currentIndex = (currentIndex + 1) % moments.length;
+        updateContent(currentIndex);
+        startAutoPlay();
+      }, 5000);
+    }
+
+    function pauseAutoPlay() {
+      clearTimeout(autoPlayTimer);
+      clearTimeout(countdownTimeout);
+      const circle = dotsWrapper.querySelector('.moments__dot.active circle');
+      if (circle) circle.classList.remove('animating');
+    }
+
+    function goToMoment(index) {
+      currentIndex = index;
+      isPaused = true;
+      pauseAutoPlay();
+      updateContent(currentIndex);
+
+      // Update icons
+      const dots = dotsWrapper.querySelectorAll('.moments__dot');
+      dots.forEach((d, i) => {
+        const icon = d.querySelector('.moments__dot-icon');
+        if (i === index) {
+          icon.textContent = '▶'; // Play icon when paused
+        }
+      });
+    }
+
+    // Play/pause icon click
+    dotsWrapper.addEventListener('click', e => {
+      const dot = e.target.closest('.moments__dot');
+      if (!dot) return;
+
+      const icon = dot.querySelector('.moments__dot-icon');
+      if (icon && icon.textContent === '▶') {
+        // Resume
+        isPaused = false;
+        icon.textContent = '⏸';
+        startAutoPlay();
+      } else if (icon && icon.textContent === '⏸' && dot.classList.contains('active')) {
+        // Pause active
+        isPaused = true;
+        pauseAutoPlay();
+        icon.textContent = '▶';
+      }
+    });
+
+    // Desktop hover
+    container.addEventListener('mouseenter', () => {
+      pauseAutoPlay();
+      const activeDot = dotsWrapper.querySelector('.moments__dot.active');
+      if (activeDot) {
+        const icon = activeDot.querySelector('.moments__dot-icon');
+        if (icon) icon.textContent = '▶';
+      }
+    });
+
+    container.addEventListener('mouseleave', () => {
+      if (!isPaused) {
+        const activeDot = dotsWrapper.querySelector('.moments__dot.active');
+        if (activeDot) {
+          const icon = activeDot.querySelector('.moments__dot-icon');
+          if (icon) icon.textContent = '⏸';
+        }
+        startAutoPlay();
+      }
+    });
+
+    // Arrow buttons
+    prevBtn.addEventListener('click', () => {
+      currentIndex = (currentIndex - 1 + moments.length) % moments.length;
+      goToMoment(currentIndex);
+    });
+
+    nextBtn.addEventListener('click', () => {
+      currentIndex = (currentIndex + 1) % moments.length;
+      goToMoment(currentIndex);
+    });
+
+    // Initialize
+    updateContent(0);
+    startAutoPlay();
+  }
+
   // ── WAITLIST FORM ──────────────────────────────────
   function initForm() {
     const form   = document.getElementById('wl-form');
@@ -1361,6 +1757,7 @@
     initNav();
     initDrawer();
     initSticky();
+    initMomentsCarousel();
     initForm();
     initMiniDrizzles();
   });
