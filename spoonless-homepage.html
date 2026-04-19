@@ -512,7 +512,7 @@
       display: flex; align-items: center; justify-content: center;
       cursor: pointer; font-size: 0.95rem;
       font-family: var(--font-body); flex-shrink: 0;
-      transition: background 0.2s, border-color 0.2s;
+      transition: background 0.2s, border-color 0.2s, color 0.2s;
     }
     .moments__arrow:hover {
       background: rgba(245,237,216,.12);
@@ -531,6 +531,69 @@
         margin-bottom: 2rem;
       }
       .moments__headline { font-size: clamp(1.5rem, 5vw, 2rem); }
+    }
+
+    /* ─────────────────────────────────────────
+       TRADE SECRETS
+    ───────────────────────────────────────── */
+    .trade {
+      background: var(--cream);
+      padding: 7rem clamp(1.5rem, 5vw, 4rem);
+    }
+    .trade__inner {
+      max-width: 1100px;
+      margin: 0 auto;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 5rem;
+      align-items: center;
+    }
+    .trade__eyebrow {
+      font-size: var(--xs-size); font-weight: 500; letter-spacing: 0.22em;
+      text-transform: uppercase; color: var(--rust); margin-bottom: 1.25rem;
+    }
+    .trade__title {
+      font-family: var(--font-display); font-style: italic;
+      font-size: clamp(1.9rem, 3.5vw, 3rem); color: var(--roast);
+      line-height: 1.1; margin-bottom: 2rem; max-width: 22ch;
+    }
+    .trade__body {
+      font-size: var(--lg-size); font-weight: 300; color: var(--walnut);
+      line-height: 1.85;
+    }
+    .trade__body p + p { margin-top: 1.25rem; }
+    .trade__visual {
+      width: 100%;
+      aspect-ratio: 4 / 3;
+      border-radius: 16px;
+      overflow: hidden;
+      background: linear-gradient(160deg, #1C1410 0%, #3D1F0D 30%, #7a2e10 65%, #C44B1B 90%, var(--golden) 100%);
+      box-shadow: 0 20px 60px rgba(28,20,16,.18);
+      position: relative;
+    }
+    .trade__visual-label {
+      position: absolute; bottom: 1.25rem; left: 1.5rem;
+      font-family: var(--font-display); font-style: italic;
+      font-size: var(--sm-size); color: rgba(245,237,216,0.6);
+    }
+    .trade__visual video,
+    .trade__visual img {
+      width: 100%; height: 100%; object-fit: cover; display: block;
+    }
+
+    @media (max-width: 860px) {
+      .trade__inner {
+        grid-template-columns: 1fr;
+        gap: 3rem;
+      }
+      .trade__visual {
+        aspect-ratio: 16 / 9;
+        max-width: 560px;
+        margin: 0 auto;
+      }
+      .trade__title { max-width: none; }
+      .trade__copy { order: -1; }
+      .trade__visual-wrap { order: 0; }
     }
 
     /* ─────────────────────────────────────────
@@ -858,8 +921,9 @@
       .pcard__name { font-size: 1.4rem; }
 
       .values { padding: 4rem 1rem 5rem; }
-      .values__grid { grid-template-columns: 1fr; }
-      .value-item:last-child { border-bottom: none; }
+      .values__grid { grid-template-columns: repeat(2, 1fr); }
+      .value-item { padding: 1.75rem 1.25rem; }
+      .value-item:nth-last-child(-n+2) { border-bottom: none; }
 
       .waitlist__form { flex-direction: column; }
       .waitlist__input { border-radius: 8px; width: 100%; }
@@ -992,7 +1056,7 @@
         <path d="M29 26 L36 22 C38 20 38 18 36 18 C34 18 32 20 33 23 C34 26 36 26 36 22"/>
       </svg>
       <h3 class="value-item__title">Zero Friction</h3>
-      <p class="value-item__copy">No jar to stir. No knife to clean. Peanut butter, exactly where you want it.</p>
+      <p class="value-item__copy">No jar to stir. No knife to clean. A silicone-valve cap means peanut butter only goes where you want it.</p>
     </div>
 
     <div class="value-item" data-reveal data-d="2">
@@ -1005,7 +1069,7 @@
         <line x1="16" y1="40" x2="28" y2="40"/>
       </svg>
       <h3 class="value-item__title">Nothing Weird</h3>
-      <p class="value-item__copy">Peanut butter, as it should be - with minimal ingredients, mostly peanuts.</p>
+      <p class="value-item__copy">Peanuts. Peanut oil. Salt. No palm oil, no stabilizers, no ingredients you have to look up.</p>
     </div>
 
     <div class="value-item" data-reveal data-d="3">
@@ -1032,7 +1096,7 @@
         <line x1="17" y1="20" x2="27" y2="20"/>
       </svg>
       <h3 class="value-item__title">Premium Format</h3>
-      <p class="value-item__copy">Condiment shelf energy. Recyclable, ready, and worth keeping on the counter.</p>
+      <p class="value-item__copy">Inverted bottle means the good stuff is always ready at the cap. A silicone valve releases only when you squeeze and seals the second you stop. Perfectly portioned. We did our part.</p>
     </div>
 
   </div>
@@ -1084,7 +1148,7 @@
           </svg>
         </div>
         <h3 class="pcard__name">Original</h3>
-        <p class="pcard__desc">12 oz · Peanuts. Salt. That's it.<br>The one that started everything.</p>
+        <p class="pcard__desc">The one that started everything.</p>
         <a href="#waitlist" class="btn btn-rust btn-md btn-full">Join the Waitlist</a>
         <a href="#" class="pcard__details">View full product details →</a>
       </div>
@@ -1111,7 +1175,7 @@
           </svg>
         </div>
         <h3 class="pcard__name">Hazelnut Cacao</h3>
-        <p class="pcard__desc">12 oz · Hazelnut + cacao.<br>Peanut butter, but a little extra.</p>
+        <p class="pcard__desc">Peanut butter, but a little extra.</p>
         <a href="#waitlist" class="btn btn-golden btn-md btn-full">Join the Waitlist</a>
         <a href="#" class="pcard__details">View full product details →</a>
       </div>
@@ -1171,6 +1235,35 @@
     <path d="M0,30 C480,60 960,0 1440,28 L1440,60 L0,60 Z" fill="#F5EDD8"/>
   </svg>
 </div>
+
+
+<!-- ══════════════════════════════
+     TRADE SECRETS
+══════════════════════════════ -->
+<section class="trade" aria-label="Trade Secrets">
+  <div class="trade__inner">
+
+    <div class="trade__visual-wrap" data-reveal>
+      <div class="trade__visual">
+        <!-- swap src for your video or image when ready -->
+        <video src="melanger.mp4" autoplay loop muted playsinline
+               onerror="this.style.display='none'"></video>
+        <img src="melanger.jpg" alt="Granite stone grinder running" onerror="this.style.display='none'">
+        <p class="trade__visual-label">Stone-ground. Small batch.</p>
+      </div>
+    </div>
+
+    <div class="trade__copy" data-reveal data-d="2">
+      <p class="trade__eyebrow">Trade secrets</p>
+      <h2 class="trade__title">Just peanuts. Doing their thing.</h2>
+      <div class="trade__body">
+        <p>Most peanut butter is made in minutes. Ours takes hours. Stone-ground in small batches with granite rollers, the same process used by craft chocolate makers, until the texture lands exactly where it should: glossy, silky, and ready to pour.</p>
+        <p>The drizzle isn't added. It's what happens when you get it right.</p>
+      </div>
+    </div>
+
+  </div>
+</section>
 
 
 <!-- ══════════════════════════════
@@ -1539,8 +1632,17 @@
       updateContent(currentIndex);
     }
 
-    prevBtn.addEventListener('click', () => goTo(currentIndex - 1));
-    nextBtn.addEventListener('click', () => goTo(currentIndex + 1));
+    function flashArrow(btn) {
+      btn.style.background    = 'var(--rust)';
+      btn.style.borderColor   = 'var(--rust)';
+      setTimeout(() => {
+        btn.style.background  = '';
+        btn.style.borderColor = '';
+      }, 300);
+    }
+
+    prevBtn.addEventListener('click', () => { goTo(currentIndex - 1); flashArrow(prevBtn); });
+    nextBtn.addEventListener('click', () => { goTo(currentIndex + 1); flashArrow(nextBtn); });
 
     updateContent(0);
   }
