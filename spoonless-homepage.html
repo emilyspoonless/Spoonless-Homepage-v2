@@ -408,16 +408,6 @@
       position: absolute; right: -12px; top: 18px;
     }
 
-    .pcard__pill {
-      display: inline-flex; align-items: center;
-      border-radius: var(--pill);
-      padding: 0.22rem 0.7rem;
-      font-size: 0.7rem; font-weight: 500;
-      letter-spacing: 0.1em; text-transform: uppercase;
-      margin-bottom: 1rem;
-    }
-    .pcard--og   .pcard__pill { background: var(--roast); color: var(--cream); }
-    .pcard--choc .pcard__pill { border: 1px solid var(--golden); color: var(--golden); }
     .pcard__name {
       font-family: var(--font-display); font-style: italic;
       font-size: 1.9rem; line-height: 1.1; margin-bottom: 0.6rem;
@@ -430,126 +420,15 @@
     }
     .pcard--og   .pcard__desc { color: var(--walnut); }
     .pcard--choc .pcard__desc { color: rgba(245,237,216,.72); }
-    .products__more {
-      display: block; text-align: center;
+    .pcard__details {
+      display: block; text-align: center; margin-top: 0.75rem;
       font-family: var(--font-display); font-style: italic;
-      font-size: 1.1rem; color: var(--rust);
-      transition: letter-spacing 0.2s, color 0.2s;
+      font-size: var(--sm-size);
+      transition: opacity 0.2s;
     }
-    .products__more:hover { color: var(--ember); letter-spacing: 0.03em; }
-
-    /* ─────────────────────────────────────────
-       EDITORIAL GRID
-    ───────────────────────────────────────── */
-    .editorial { background: var(--cream); padding-bottom: 6rem; }
-    .editorial__head {
-      padding: 5rem clamp(1rem,4vw,3rem) 2.5rem;
-      max-width: 1200px; margin: 0 auto;
-    }
-    .editorial__eyebrow {
-      font-size: var(--xs-size); font-weight: 500;
-      letter-spacing: 0.22em; text-transform: uppercase;
-      color: var(--rust); margin-bottom: 1rem;
-    }
-    .editorial__title {
-      font-family: var(--font-display); font-style: italic;
-      font-size: var(--h2-size); color: var(--roast); line-height: 1.1;
-    }
-    .editorial__tiles {
-      display: grid; grid-template-columns: repeat(3, 1fr); gap: 4px;
-    }
-    .e-tile { position: relative; overflow: hidden; cursor: pointer; }
-    .e-tile .slot { aspect-ratio: 3/4; transition: transform 0.5s ease; }
-    .e-tile:hover .slot { transform: scale(1.04); }
-    .e-tile__overlay {
-      position: absolute; inset: 0;
-      background: linear-gradient(to top, rgba(28,20,16,.85) 0%, rgba(28,20,16,0) 55%);
-      display: flex; flex-direction: column; justify-content: flex-end;
-      padding: 1.5rem;
-      transform: translateY(100%);
-      transition: transform 0.38s cubic-bezier(.4,0,.2,1);
-    }
-    .e-tile:hover .e-tile__overlay { transform: translateY(0); }
-    .e-tile__cap { font-size: var(--base-size); color: var(--cream); line-height: 1.35; }
-    .e-tile__sub {
-      font-size: var(--xs-size); color: rgba(245,237,216,.6);
-      letter-spacing: 0.1em; text-transform: uppercase; margin-top: 0.3rem;
-    }
-    /* on touch / non-hover devices show overlay */
-    @media (hover: none) {
-      .e-tile__overlay { transform: translateY(0); }
-    }
-
-    /* ─────────────────────────────────────────
-       SOCIETY COLLAGE
-    ───────────────────────────────────────── */
-    .society { background: var(--walnut); position: relative; }
-    .society__top {
-      display: grid; grid-template-columns: 3fr 2fr; gap: 2px;
-    }
-    .soc-a { grid-column: 1; grid-row: 1 / 3; }
-    .soc-a .slot {
-      height: 100%; min-height: 520px;
-      background: linear-gradient(160deg, #1C1410 0%, #5c2810 45%, var(--rust) 100%);
-    }
-    .soc-b {
-      grid-column: 2; grid-row: 1;
-      background: var(--rust);
-      display: flex; align-items: center; justify-content: center;
-      padding: 3rem 2.5rem; min-height: 280px;
-    }
-    .soc-b blockquote {
-      font-family: var(--font-display); font-style: italic;
-      font-size: clamp(1.3rem, 2.8vw, 2.1rem);
-      color: var(--cream); line-height: 1.25; text-align: center;
-    }
-    .soc-c { grid-column: 2; grid-row: 2; }
-    .soc-c .slot {
-      height: 100%; min-height: 220px;
-      background: linear-gradient(145deg, #3D1F0D 0%, #7a3015 50%, #d4a040 100%);
-    }
-    .society__bot {
-      display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 2px;
-    }
-    .soc-d .slot {
-      aspect-ratio: 4/3;
-      background: linear-gradient(135deg, #2a1208 0%, #8B3A1A 60%, var(--rust) 100%);
-    }
-    .soc-e {
-      background: var(--cream);
-      display: flex; align-items: center; justify-content: center;
-      padding: 2rem 1.5rem;
-    }
-    .soc-e p {
-      font-family: var(--font-display); font-style: italic;
-      font-size: clamp(1rem,2.2vw,1.5rem);
-      color: var(--roast); text-align: center; line-height: 1.4;
-    }
-    .soc-f {
-      background: var(--roast);
-      padding: 2.5rem 2rem;
-      display: flex; flex-direction: column; justify-content: center;
-    }
-    .soc-f__title {
-      font-family: var(--font-display); font-style: italic;
-      font-size: 1.35rem; color: var(--cream); margin-bottom: 1rem;
-    }
-    .soc-f__body {
-      font-size: var(--sm-size); font-weight: 300;
-      color: rgba(245,237,216,.6); line-height: 1.75;
-    }
-    /* hover rust border on image cells */
-    .soc-a, .soc-c, .soc-d {
-      position: relative; overflow: hidden; cursor: pointer;
-    }
-    .soc-a::after, .soc-c::after, .soc-d::after {
-      content: ''; position: absolute; inset: 0;
-      border: 0px solid var(--rust);
-      transition: border-width 0.2s; pointer-events: none; z-index: 5;
-    }
-    .soc-a:hover::after, .soc-c:hover::after, .soc-d:hover::after {
-      border-width: 3px;
-    }
+    .pcard--og   .pcard__details { color: var(--rust); }
+    .pcard--choc .pcard__details { color: var(--golden); }
+    .pcard__details:hover { opacity: 0.7; }
 
     /* ─────────────────────────────────────────
        MOMENTS CAROUSEL
@@ -566,7 +445,7 @@
     }
     .moments__container {
       display: grid; grid-template-columns: 1fr 1fr; gap: 4rem;
-      max-width: 1200px; margin: 0 auto 5rem;
+      max-width: 1200px; margin: 0 auto 3rem;
       min-height: 500px;
     }
     .moments__image {
@@ -579,109 +458,233 @@
     }
     .moments__content {
       display: flex; flex-direction: column; justify-content: center;
-      animation: fadeInSlide 0.6s ease-out;
-    }
-    .moments__label {
-      font-size: var(--xs-size); font-weight: 500;
-      letter-spacing: 0.22em; text-transform: uppercase;
-      color: var(--rust); margin-bottom: 1rem;
-      animation: fadeInSlide 0.6s ease-out 0.1s both;
     }
     .moments__headline {
       font-family: var(--font-display); font-style: italic;
       font-size: var(--h2-size); color: var(--cream);
       margin-bottom: 1.5rem; line-height: 1.1;
-      animation: fadeInSlide 0.6s ease-out 0.15s both;
     }
     .moments__copy {
       font-size: var(--lg-size); font-weight: 300;
       color: rgba(245,237,216,.85); line-height: 1.8;
-      animation: fadeInSlide 0.6s ease-out 0.2s both;
     }
     @keyframes fadeInSlide {
-      from { opacity: 0; transform: translateX(12px); }
-      to { opacity: 1; transform: translateX(0); }
+      from { opacity: 0; transform: translateX(10px); }
+      to   { opacity: 1; transform: translateX(0); }
     }
 
-    /* Timeline Navigation */
+    /* Navigation */
     .moments__timeline {
       display: flex; align-items: center; justify-content: center;
-      gap: 1.5rem; max-width: 1000px; margin: 0 auto;
-      overflow-x: auto; padding: 1rem 0;
+      gap: 0.6rem; max-width: 1000px; margin: 0 auto;
+      padding: 1.5rem 0 0;
     }
-    .moments__arrow {
-      font-size: 1.5rem; color: var(--rust);
-      background: none; border: none; cursor: pointer;
-      transition: opacity 0.2s;
-      flex-shrink: 0; padding: 0.5rem;
-    }
-    .moments__arrow:hover { opacity: 0.6; }
-    .moments__arrow--prev, .moments__arrow--next { display: none; }
-    @media (max-width: 960px) {
-      .moments__arrow { display: block; }
-    }
-
     .moments__dots-wrapper {
-      display: flex; gap: 1rem; align-items: center;
-      overflow-x: auto; flex: 1; justify-content: center;
-      scroll-behavior: smooth;
+      display: flex; gap: 0.55rem; align-items: center;
     }
     .moments__dot {
-      width: 44px; height: 44px; border-radius: 50%;
-      background: rgba(232, 98, 42, 0.2);
-      border: 2px solid var(--rust);
-      cursor: pointer; position: relative;
-      display: flex; align-items: center; justify-content: center;
-      flex-shrink: 0; transition: background 0.3s;
-      font-size: 0.5rem; color: var(--cream);
+      width: 10px; height: 10px; border-radius: 50%;
+      background: rgba(245,237,216,.22);
+      border: 1.5px solid rgba(245,237,216,.38);
+      cursor: pointer; flex-shrink: 0; padding: 0;
+      transition: background 0.25s, border-color 0.25s;
     }
     .moments__dot.active {
-      background: var(--rust);
-      box-shadow: 0 0 0 4px rgba(232, 98, 42, 0.3);
+      background: var(--rust); border-color: var(--rust);
     }
-    .moments__dot-icon {
-      font-size: 1.2rem; line-height: 1;
+    .moments__dot:hover:not(.active) {
+      background: rgba(245,237,216,.42);
     }
-    .moments__countdown {
-      position: absolute; inset: -3px;
-      border-radius: 50%;
+    .moments__nav-arrows {
+      display: flex; gap: 0.4rem; margin-left: 0.9rem;
     }
-    .moments__countdown circle {
-      transform: rotate(-90deg);
-      transform-origin: center;
-      stroke-dasharray: 130; stroke-dashoffset: 0;
-      transition: stroke-dashoffset 5s linear;
+    .moments__arrow {
+      width: 34px; height: 34px; border-radius: 50%;
+      border: 1.5px solid rgba(245,237,216,.38);
+      background: none; color: var(--cream);
+      display: flex; align-items: center; justify-content: center;
+      cursor: pointer; font-size: 0.95rem;
+      font-family: var(--font-body); flex-shrink: 0;
+      transition: background 0.2s, border-color 0.2s;
     }
-    .moments__countdown circle.animating {
-      stroke-dashoffset: 130;
-    }
-
-    .moments__dot--label {
-      position: absolute; bottom: -28px;
-      font-size: 0.7rem; font-weight: 500;
-      letter-spacing: 0.08em; text-transform: uppercase;
-      color: var(--cream); white-space: nowrap;
-      text-align: center; width: 60px;
-      pointer-events: none;
+    .moments__arrow:hover {
+      background: rgba(245,237,216,.12);
+      border-color: rgba(245,237,216,.75);
     }
 
     @media (max-width: 960px) {
-      .moments {
-        padding: 4rem clamp(1rem, 4vw, 2rem);
-      }
+      .moments { padding: 4rem clamp(1rem, 4vw, 2rem) 5rem; }
       .moments__container {
         grid-template-columns: 1fr;
-        gap: 2rem; min-height: auto;
-        margin-bottom: 4rem;
+        gap: 2rem; min-height: auto; margin-bottom: 3rem;
       }
+      .moments__image { min-height: 260px; }
       .moments__title {
         font-size: clamp(1.5rem, 3vw, 2.5rem);
         margin-bottom: 2rem;
       }
-      .moments__headline {
-        font-size: clamp(1.5rem, 3vw, 2rem);
-      }
+      .moments__headline { font-size: clamp(1.5rem, 5vw, 2rem); }
     }
+
+    /* ─────────────────────────────────────────
+       ABOUT / FOUNDER STORY
+    ───────────────────────────────────────── */
+    .about {
+      background: var(--cream);
+      padding: 7rem clamp(1.5rem, 5vw, 4rem);
+    }
+    .about__inner {
+      display: grid;
+      grid-template-columns: 3fr 2fr;
+      gap: 5rem;
+      max-width: 1100px;
+      margin: 0 auto;
+      align-items: center;
+    }
+    .about__eyebrow {
+      font-size: var(--xs-size); font-weight: 500;
+      letter-spacing: 0.22em; text-transform: uppercase;
+      color: var(--rust); margin-bottom: 1.25rem;
+    }
+    .about__title {
+      font-family: var(--font-display); font-style: italic;
+      font-size: clamp(1.9rem, 3.5vw, 3rem);
+      color: var(--roast); line-height: 1.1;
+      margin-bottom: 2rem; max-width: 20ch;
+    }
+    .about__body {
+      font-size: var(--lg-size); font-weight: 300;
+      color: var(--walnut); line-height: 1.85;
+    }
+    .about__body p + p { margin-top: 1.25rem; }
+    .about__photo-wrap {
+      position: relative;
+    }
+    .about__photo {
+      width: 100%; aspect-ratio: 3 / 4;
+      border-radius: 16px; overflow: hidden;
+      background: linear-gradient(160deg, #2a1005 0%, #7a2e10 40%, #C44B1B 80%, var(--golden) 100%);
+      box-shadow: 0 20px 60px rgba(28,20,16,.14);
+    }
+    .about__photo img {
+      width: 100%; height: 100%; object-fit: cover;
+    }
+    .about__photo-label {
+      position: absolute; bottom: -1rem; left: 1.5rem;
+      font-family: var(--font-display); font-style: italic;
+      font-size: var(--sm-size); color: var(--walnut); opacity: 0.65;
+    }
+
+    @media (max-width: 860px) {
+      .about__inner {
+        grid-template-columns: 1fr;
+        gap: 3rem;
+      }
+      .about__photo {
+        aspect-ratio: 4 / 3;
+        max-width: 480px;
+        margin: 0 auto;
+      }
+      .about__title { max-width: none; }
+    }
+
+    /* ─────────────────────────────────────────
+       INSTAGRAM GRID
+    ───────────────────────────────────────── */
+    .insta {
+      background: var(--cream);
+      padding: 5rem clamp(1.5rem, 5vw, 4rem) 4rem;
+    }
+    .insta__header {
+      text-align: center;
+      margin-bottom: 2.5rem;
+    }
+    .insta__eyebrow {
+      font-size: var(--xs-size); font-weight: 500; letter-spacing: 0.22em;
+      text-transform: uppercase; color: var(--rust); margin-bottom: 0.75rem;
+    }
+    .insta__title {
+      font-family: var(--font-display); font-style: italic;
+      font-size: clamp(1.6rem, 3vw, 2.4rem); color: var(--roast); line-height: 1.15;
+    }
+    .insta__handle {
+      display: inline-block; margin-top: 0.5rem;
+      font-size: var(--sm-size); font-weight: 500; color: var(--rust);
+      letter-spacing: 0.04em; text-decoration: none;
+    }
+    .insta__handle:hover { text-decoration: underline; }
+    .insta__grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 0;
+      max-width: 900px;
+      margin: 0 auto;
+      border-radius: 12px;
+      overflow: hidden;
+    }
+    .insta__item {
+      aspect-ratio: 1 / 1;
+      overflow: hidden;
+      cursor: pointer;
+      position: relative;
+      background: linear-gradient(135deg, #2a1005 0%, #7a2e10 50%, #C44B1B 80%, var(--golden) 100%);
+    }
+    .insta__item:nth-child(2)  { background: linear-gradient(135deg, var(--golden) 0%, var(--rust) 60%, #2a1005 100%); }
+    .insta__item:nth-child(3)  { background: linear-gradient(135deg, #3D1F0D 0%, #C44B1B 50%, #E8A020 100%); }
+    .insta__item:nth-child(4)  { background: linear-gradient(135deg, #E8A020 0%, #3D1F0D 60%, var(--rust) 100%); }
+    .insta__item:nth-child(5)  { background: linear-gradient(135deg, var(--rust) 0%, #2a1005 40%, #E8A020 100%); }
+    .insta__item:nth-child(6)  { background: linear-gradient(135deg, #7a2e10 0%, var(--golden) 50%, #1C1410 100%); }
+    .insta__item:nth-child(7)  { background: linear-gradient(135deg, #C44B1B 0%, #3D1F0D 50%, #E8A020 100%); }
+    .insta__item:nth-child(8)  { background: linear-gradient(135deg, #2a1005 0%, var(--rust) 40%, var(--golden) 100%); }
+    .insta__item:nth-child(9)  { background: linear-gradient(135deg, var(--golden) 0%, #7a2e10 60%, var(--rust) 100%); }
+    .insta__item img {
+      width: 100%; height: 100%; object-fit: cover; display: block;
+      transition: transform 0.35s ease;
+    }
+    .insta__item:hover img { transform: scale(1.04); }
+    .insta__overlay {
+      position: absolute; inset: 0; background: rgba(28,20,16,0);
+      transition: background 0.25s; display: flex; align-items: center; justify-content: center;
+    }
+    .insta__item:hover .insta__overlay { background: rgba(28,20,16,0.28); }
+    .insta__overlay-icon {
+      opacity: 0; transform: scale(0.85); transition: opacity 0.25s, transform 0.25s;
+      color: var(--cream); font-size: 1.4rem; font-weight: 300;
+    }
+    .insta__item:hover .insta__overlay-icon { opacity: 1; transform: scale(1); }
+
+    /* Lightbox */
+    .insta__lb {
+      position: fixed; inset: 0; z-index: 1000;
+      background: rgba(28,20,16,0.88);
+      display: flex; align-items: center; justify-content: center;
+      opacity: 0; pointer-events: none;
+      transition: opacity 0.25s;
+    }
+    .insta__lb.open { opacity: 1; pointer-events: all; }
+    .insta__lb-inner {
+      position: relative;
+      max-width: min(92vw, 640px);
+      max-height: 92vh;
+      border-radius: 12px;
+      overflow: hidden;
+      transform: scale(0.95); transition: transform 0.25s;
+    }
+    .insta__lb.open .insta__lb-inner { transform: scale(1); }
+    .insta__lb-img {
+      width: 100%; height: auto; display: block;
+      object-fit: contain; max-height: 92vh;
+    }
+    .insta__lb-bg {
+      width: 100%; aspect-ratio: 1/1;
+    }
+    .insta__lb-close {
+      position: absolute; top: 0.75rem; right: 0.9rem;
+      background: none; border: none; color: var(--cream); font-size: 1.6rem;
+      cursor: pointer; line-height: 1; padding: 0.25rem;
+      opacity: 0.8; transition: opacity 0.2s;
+    }
+    .insta__lb-close:hover { opacity: 1; }
 
     /* ─────────────────────────────────────────
        WAITLIST
@@ -824,14 +827,8 @@
       .value-item { border-right: none; border-bottom: 1px solid rgba(232,98,42,.15); }
       .value-item:nth-last-child(-n+2) { border-bottom: none; }
 
-      .products__grid { grid-template-columns: 1fr; max-width: 400px; }
-
-      .editorial__tiles { grid-template-columns: 1fr; }
-      .e-tile .slot { aspect-ratio: 16/9; }
-
-      .society__top { grid-template-columns: 1fr 1fr; }
-      .society__bot { grid-template-columns: 1fr 1fr; }
-      .soc-f { grid-column: 1 / -1; }
+      .products__grid { grid-template-columns: 1fr 1fr; max-width: 860px; }
+      .pcard__body { padding: 1.5rem 1.25rem 1.5rem; }
 
       .footer__cols { grid-template-columns: 1fr 1fr; }
       .sticky { display: block; }
@@ -848,14 +845,14 @@
       }
       .hero__sub { font-size: 1rem; }
 
+      .products__grid { gap: 0.75rem; }
+      .pcard__body { padding: 1.25rem 1rem 1.25rem; }
+      .bottle-wrap { height: 140px; }
+      .pcard__name { font-size: 1.4rem; }
+
       .values { padding: 4rem 1rem 5rem; }
       .values__grid { grid-template-columns: 1fr; }
       .value-item:last-child { border-bottom: none; }
-
-      .society__top { grid-template-columns: 1fr; }
-      .soc-a { grid-row: auto; }
-      .soc-b, .soc-c { grid-column: 1; }
-      .society__bot { grid-template-columns: 1fr; }
 
       .waitlist__form { flex-direction: column; }
       .waitlist__input { border-radius: 8px; width: 100%; }
@@ -1078,10 +1075,10 @@
               stroke="#E8622A" stroke-width="2" stroke-linecap="round"/>
           </svg>
         </div>
-        <span class="pcard__pill">Original</span>
-        <h3 class="pcard__name">The Original</h3>
+        <h3 class="pcard__name">Original</h3>
         <p class="pcard__desc">12 oz · Peanuts. Salt. That's it.<br>The one that started everything.</p>
         <a href="#waitlist" class="btn btn-rust btn-md btn-full">Join the Waitlist</a>
+        <a href="#" class="pcard__details">View full product details →</a>
       </div>
     </article>
 
@@ -1105,61 +1102,12 @@
               stroke="#E8A020" stroke-width="2" stroke-linecap="round"/>
           </svg>
         </div>
-        <span class="pcard__pill">Hazelnut Cacao</span>
-        <h3 class="pcard__name">The Chocolate</h3>
+        <h3 class="pcard__name">Hazelnut Cacao</h3>
         <p class="pcard__desc">12 oz · Hazelnut + cacao.<br>Peanut butter, but a little extra.</p>
         <a href="#waitlist" class="btn btn-golden btn-md btn-full">Join the Waitlist</a>
+        <a href="#" class="pcard__details">View full product details →</a>
       </div>
     </article>
-
-  </div>
-
-  <a href="#" class="products__more" data-reveal>View Full Product Details →</a>
-
-</section>
-
-
-<!-- ══════════════════════════════
-     EDITORIAL GRID
-══════════════════════════════ -->
-<section class="editorial" aria-label="Where it drizzles">
-
-  <div class="editorial__head">
-    <p class="editorial__eyebrow" data-reveal>No Spoon? No Problem.</p>
-    <h2 class="editorial__title" data-reveal data-d="1">Where it drizzles.</h2>
-  </div>
-
-  <div class="editorial__tiles">
-
-    <div class="e-tile" data-reveal>
-      <div class="slot slot-warm">
-        <div class="slot__label">Spicy red chicken wings</div>
-      </div>
-      <div class="e-tile__overlay" aria-hidden="true">
-        <p class="e-tile__cap">Spicy wings, dangerous drizzle</p>
-        <p class="e-tile__sub">The Original</p>
-      </div>
-    </div>
-
-    <div class="e-tile" data-reveal data-d="1">
-      <div class="slot slot-amber">
-        <div class="slot__label">Morning waffle bowl</div>
-      </div>
-      <div class="e-tile__overlay" aria-hidden="true">
-        <p class="e-tile__cap">Morning waffle, perfect zigzag</p>
-        <p class="e-tile__sub">The Original</p>
-      </div>
-    </div>
-
-    <div class="e-tile" data-reveal data-d="2">
-      <div class="slot slot-golden">
-        <div class="slot__label">Cheese &amp; fruit board</div>
-      </div>
-      <div class="e-tile__overlay" aria-hidden="true">
-        <p class="e-tile__cap">Cheese board, elevated</p>
-        <p class="e-tile__sub">The Chocolate</p>
-      </div>
-    </div>
 
   </div>
 
@@ -1181,85 +1129,111 @@
      MOMENTS CAROUSEL
 ══════════════════════════════ -->
 <section class="moments" id="moments" aria-label="Spoonless Moments">
-  <h2 class="moments__title" data-reveal>One Drizzle. Endless Possibilities</h2>
+  <h2 class="moments__title" data-reveal>One Drizzle. Endless Possibilities.</h2>
 
   <div class="moments__container" id="moments-container">
-    <!-- Image Placeholder -->
     <div class="moments__image" id="moments-image">
       <img src="yogurt-bowl.png" alt="Breakfast moment - yogurt bowl with Spoonless drizzle" class="moments__img">
     </div>
 
-    <!-- Content -->
     <div class="moments__content">
-      <p class="moments__label" id="moments-label">Breakfast</p>
-      <h3 class="moments__headline" id="moments-headline">Quick. Easy. Energizing.</h3>
-      <p class="moments__copy" id="moments-copy">Start your morning right with a protein-packed breakfast bowl — drizzled generously over yogurt, granola, and fresh berries.</p>
+      <h3 class="moments__headline" id="moments-headline">Breakfast</h3>
+      <p class="moments__copy" id="moments-copy">Drizzle over yogurt, granola, and berries for a protein-packed start. No jar. No spoon. Just the good part.</p>
     </div>
   </div>
 
-  <!-- Timeline Navigation -->
   <div class="moments__timeline" id="moments-timeline">
-    <button class="moments__arrow moments__arrow--prev" id="moments-prev" aria-label="Previous moment">←</button>
-
     <div class="moments__dots-wrapper" id="moments-dots-wrapper">
       <!-- Dots generated by JavaScript -->
     </div>
-
-    <button class="moments__arrow moments__arrow--next" id="moments-next" aria-label="Next moment">→</button>
+    <div class="moments__nav-arrows">
+      <button class="moments__arrow" id="moments-prev" aria-label="Previous moment">←</button>
+      <button class="moments__arrow" id="moments-next" aria-label="Next moment">→</button>
+    </div>
   </div>
 </section>
 
 
+<!-- ══════════════════════════════
+     WAVE · walnut → cream
 ══════════════════════════════ -->
-<section class="society" id="society" aria-label="The Spoonless Society">
+<div class="wave-wrap" aria-hidden="true">
+  <svg viewBox="0 0 1440 60" preserveAspectRatio="none" xmlns="http://www.w3.org/2000/svg">
+    <rect width="1440" height="60" fill="#3D1F0D"/>
+    <path d="M0,30 C480,60 960,0 1440,28 L1440,60 L0,60 Z" fill="#F5EDD8"/>
+  </svg>
+</div>
 
-  <div class="society__top">
-    <div class="soc-a">
-      <div class="slot" data-photo="The Ritual Optimizer: squeezing Spoonless into morning blender — 6:45 AM">
-        <div class="slot__label">The Ritual Optimizer — 6:45 AM</div>
-      </div>
-    </div>
-    <div class="soc-b" data-reveal>
-      <blockquote>
-        "Finally, peanut butter that knows it's a topping."
-      </blockquote>
-    </div>
-    <div class="soc-c">
-      <div class="slot" style="background:linear-gradient(145deg,#3D1F0D 0%,#7a3015 50%,#d4a040 100%); height:100%; min-height:220px;">
-        <div class="slot__label">The Considered Indulger — Sunday Morning</div>
-      </div>
-    </div>
-  </div>
 
-  <div class="society__bot">
-    <div class="soc-d">
-      <div class="slot" style="background:linear-gradient(135deg,#2a1208 0%,#8B3A1A 60%,var(--rust) 100%);">
-        <div class="slot__label">The Standard-Keeper — Lunch Prep</div>
+<!-- ══════════════════════════════
+     ABOUT / FOUNDER STORY
+══════════════════════════════ -->
+<section class="about" aria-label="From My Kitchen">
+
+  <div class="about__inner">
+
+    <div class="about__copy" data-reveal>
+      <p class="about__eyebrow">From My Kitchen</p>
+      <h2 class="about__title">A lifelong obsession that finally has somewhere to go.</h2>
+      <div class="about__body">
+        <p>I've been eating peanut butter my whole life — from packed pb&j sandwiches as a kid to a slightly more elevated version as an adult. I literally signed up for peanut butter of the month club with my first paycheck, and I truly think a pan fried peanut butter banana sandwich would be my last meal.</p>
+        <p>I love peanut butter so much that I knew it had to be a part of my most recent birthday. I invited my friends over for brunch on a Sunday morning, and that's where the idea for Spoonless came. I'd microwaved store-bought peanut butter, poured it into a squeeze bottle I ordered from Amazon, and suddenly everyone was crowding into my kitchen drizzling it over pancakes, waffles, fruit, and honestly anything they could find. Then it hardened and the moment was over.</p>
+        <p>I couldn't stop thinking <em>"wow, if someone could get this right."</em> Turns out that person was me. Spoonless isn't a business idea — it's a lifelong obsession that finally has somewhere to go.</p>
       </div>
     </div>
-    <div class="soc-e" data-reveal>
-      <p>For peanut butter lovers, finally.</p>
+
+    <div class="about__photo-wrap" data-reveal data-d="2">
+      <div class="about__photo">
+        <!-- replace src with founder photo -->
+        <img src="founder.jpg" alt="Spoonless founder" onerror="this.style.display='none'">
+      </div>
+      <p class="about__photo-label">The birthday brunch that started it all.</p>
     </div>
-    <div class="soc-f" data-reveal>
-      <h3 class="soc-f__title">The Spoonless Society</h3>
-      <p class="soc-f__body">
-        For the optimizer clocking macros at 6am. For the indulger with $60 olive oil on the counter.
-        For the standard-keeper who refuses mediocre peanut butter. You already knew it was a topping.
-        We just made the bottle for it.
-      </p>
-    </div>
+
   </div>
 
 </section>
 
 
 <!-- ══════════════════════════════
-     WAVE · walnut → rust
+     INSTAGRAM GRID
+══════════════════════════════ -->
+<section class="insta" id="instagram" aria-label="Instagram feed">
+  <div class="insta__header" data-reveal>
+    <p class="insta__eyebrow">On the 'Gram</p>
+    <h2 class="insta__title">Food this good deserves a close-up.</h2>
+    <a href="https://instagram.com/gospoonless" class="insta__handle" target="_blank" rel="noopener">@gospoonless</a>
+  </div>
+  <div class="insta__grid" data-reveal data-d="1">
+    <!-- slot 1 --><div class="insta__item" data-src="insta-1.jpg"><img src="insta-1.jpg" alt="Spoonless on Instagram" onerror="this.style.display='none'"><div class="insta__overlay"><span class="insta__overlay-icon">⊕</span></div></div>
+    <!-- slot 2 --><div class="insta__item" data-src="insta-2.jpg"><img src="insta-2.jpg" alt="Spoonless on Instagram" onerror="this.style.display='none'"><div class="insta__overlay"><span class="insta__overlay-icon">⊕</span></div></div>
+    <!-- slot 3 --><div class="insta__item" data-src="insta-3.jpg"><img src="insta-3.jpg" alt="Spoonless on Instagram" onerror="this.style.display='none'"><div class="insta__overlay"><span class="insta__overlay-icon">⊕</span></div></div>
+    <!-- slot 4 --><div class="insta__item" data-src="insta-4.jpg"><img src="insta-4.jpg" alt="Spoonless on Instagram" onerror="this.style.display='none'"><div class="insta__overlay"><span class="insta__overlay-icon">⊕</span></div></div>
+    <!-- slot 5 --><div class="insta__item" data-src="insta-5.jpg"><img src="insta-5.jpg" alt="Spoonless on Instagram" onerror="this.style.display='none'"><div class="insta__overlay"><span class="insta__overlay-icon">⊕</span></div></div>
+    <!-- slot 6 --><div class="insta__item" data-src="insta-6.jpg"><img src="insta-6.jpg" alt="Spoonless on Instagram" onerror="this.style.display='none'"><div class="insta__overlay"><span class="insta__overlay-icon">⊕</span></div></div>
+    <!-- slot 7 --><div class="insta__item" data-src="insta-7.jpg"><img src="insta-7.jpg" alt="Spoonless on Instagram" onerror="this.style.display='none'"><div class="insta__overlay"><span class="insta__overlay-icon">⊕</span></div></div>
+    <!-- slot 8 --><div class="insta__item" data-src="insta-8.jpg"><img src="insta-8.jpg" alt="Spoonless on Instagram" onerror="this.style.display='none'"><div class="insta__overlay"><span class="insta__overlay-icon">⊕</span></div></div>
+    <!-- slot 9 --><div class="insta__item" data-src="insta-9.jpg"><img src="insta-9.jpg" alt="Spoonless on Instagram" onerror="this.style.display='none'"><div class="insta__overlay"><span class="insta__overlay-icon">⊕</span></div></div>
+  </div>
+</section>
+
+<!-- Lightbox -->
+<div class="insta__lb" id="insta-lb" role="dialog" aria-modal="true" aria-label="Photo preview">
+  <div class="insta__lb-inner" id="insta-lb-inner">
+    <button class="insta__lb-close" id="insta-lb-close" aria-label="Close">×</button>
+    <img class="insta__lb-img" id="insta-lb-img" src="" alt="Instagram post" style="display:none">
+    <div class="insta__lb-bg" id="insta-lb-bg"></div>
+  </div>
+</div>
+
+
+<!-- ══════════════════════════════
+     WAVE · cream → rust
 ══════════════════════════════ -->
 <div class="wave-wrap" aria-hidden="true">
   <svg viewBox="0 0 1440 60" preserveAspectRatio="none" xmlns="http://www.w3.org/2000/svg">
-    <rect width="1440" height="60" fill="#E8622A"/>
-    <path d="M0,30 C480,60 960,0 1440,28 L1440,60 L0,60 Z" fill="#E8622A"/>
+    <rect width="1440" height="60" fill="#F5EDD8"/>
+    <path d="M0,28 C480,60 960,0 1440,32 L1440,60 L0,60 Z" fill="#E8622A"/>
   </svg>
 </div>
 
@@ -1487,232 +1461,79 @@
     const moments = [
       {
         label: 'Breakfast',
-        headline: 'Quick. Easy. Energizing.',
-        copy: 'Start your morning right with a protein-packed breakfast bowl — drizzled generously over yogurt, granola, and fresh berries.',
+        copy: 'Drizzle over yogurt, granola, and berries for a protein-packed start. No jar. No spoon. Just the good part.',
         image: 'yogurt-bowl.png'
       },
       {
-        label: 'After-School',
-        headline: 'Fuel the Second Wind.',
-        copy: 'That 3pm slump doesn\'t stand a chance. Spoonless drizzled over crackers and cheese hits different.'
-      },
-      {
-        label: 'On the Go',
-        headline: 'No Spoon Required.',
-        copy: 'Straight from the bottle into your mouth. No mess, no cleanup, pure satisfaction whenever you need it.'
-      },
-      {
-        label: 'Easy Lunch',
-        headline: 'Lunchbox Power.',
-        copy: 'Make your packed lunch the envy of the office. Drizzle over apple slices for the perfect sweet-savory moment.'
-      },
-      {
-        label: '5PM Pick Me Up',
-        headline: 'The Productivity Hack.',
-        copy: 'That 5pm energy crash? Handled. Spoonless gives you the protein boost and joy you need to finish strong.'
-      },
-      {
-        label: 'Easy Snack',
-        headline: 'Snacking Evolved.',
-        copy: 'Ditch the protein bar. Spoonless over banana slices, pretzels, or straight — because snacking should be delicious.'
-      },
-      {
         label: 'Post Workout',
-        headline: 'Recovery Tastes Good.',
-        copy: 'Refuel smart. High protein, zero guilt. Drizzle it over toast or combine with chocolate for the perfect recovery treat.'
+        copy: 'High protein, clean label. Drizzle over a rice cake or stir into a recovery shake — refuel without the compromise.'
       },
       {
-        label: 'Late Night Snack',
-        headline: 'The Midnight Solution.',
-        copy: 'When cravings strike at 11pm, reach for Spoonless. No sugar crash, no regrets — just pure comfort.'
+        label: 'Lunch',
+        copy: 'Apple slices, celery sticks, a grain bowl. Spoonless makes the midday meal worth looking forward to.'
+      },
+      {
+        label: 'Afternoon Snack',
+        copy: 'That 3pm slump doesn\'t stand a chance. Crackers, pretzels, or straight from the bottle — no guilt required.'
+      },
+      {
+        label: 'Dinner',
+        copy: 'A finishing drizzle over roasted veg, grilled chicken, or noodles. The condiment shelf finally has a worthy anchor.'
+      },
+      {
+        label: 'Dessert',
+        copy: 'Ice cream, brownies, banana slices — Hazelnut Cacao was made for this moment. The upgrade you didn\'t know you needed.'
       }
     ];
 
     let currentIndex = 0;
-    let isPaused = false;
-    let autoPlayTimer = null;
-    let countdownTimeout = null;
 
     const container = document.getElementById('moments-container');
-    const label = document.getElementById('moments-label');
-    const headline = document.getElementById('moments-headline');
-    const copy = document.getElementById('moments-copy');
-    const image = document.getElementById('moments-image');
+    const headline  = document.getElementById('moments-headline');
+    const copy      = document.getElementById('moments-copy');
+    const image     = document.getElementById('moments-image');
     const dotsWrapper = document.getElementById('moments-dots-wrapper');
-    const prevBtn = document.getElementById('moments-prev');
-    const nextBtn = document.getElementById('moments-next');
+    const prevBtn   = document.getElementById('moments-prev');
+    const nextBtn   = document.getElementById('moments-next');
 
-    // Create dots
+    // Build dots
     moments.forEach((m, i) => {
       const dot = document.createElement('button');
       dot.className = 'moments__dot' + (i === 0 ? ' active' : '');
-      dot.setAttribute('aria-label', `Go to ${m.label}`);
-      dot.setAttribute('data-index', i);
-
-      const svg = document.createElementNS('http://www.w3.org/2000/svg', 'svg');
-      svg.setAttribute('class', 'moments__countdown');
-      svg.setAttribute('viewBox', '0 0 44 44');
-      svg.setAttribute('width', '44');
-      svg.setAttribute('height', '44');
-
-      const circle = document.createElementNS('http://www.w3.org/2000/svg', 'circle');
-      circle.setAttribute('cx', '22');
-      circle.setAttribute('cy', '22');
-      circle.setAttribute('r', '20');
-      circle.setAttribute('fill', 'none');
-      circle.setAttribute('stroke', '#E8622A');
-      circle.setAttribute('stroke-width', '2');
-
-      svg.appendChild(circle);
-      dot.appendChild(svg);
-
-      const iconSpan = document.createElement('span');
-      iconSpan.className = 'moments__dot-icon';
-      iconSpan.textContent = '⏸'; // Pause icon
-      dot.appendChild(iconSpan);
-
-      const label = document.createElement('span');
-      label.className = 'moments__dot--label';
-      label.textContent = m.label;
-      dot.appendChild(label);
-
-      dot.addEventListener('click', () => goToMoment(i));
+      dot.setAttribute('aria-label', 'Go to ' + m.label);
+      dot.addEventListener('click', () => goTo(i));
       dotsWrapper.appendChild(dot);
     });
 
     function updateContent(index) {
-      const moment = moments[index];
-      const isFirst = index === 0;
+      const m = moments[index];
+      headline.textContent = m.label;
+      copy.textContent = m.copy;
 
-      // Update text content
-      label.textContent = moment.label;
-      headline.textContent = moment.headline;
-      copy.textContent = moment.copy;
-
-      // Update image if exists, otherwise show placeholder
-      if (moment.image) {
-        image.innerHTML = `<img src="${moment.image}" alt="${moment.label} moment" class="moments__img">`;
+      if (m.image) {
+        image.innerHTML = '<img src="' + m.image + '" alt="' + m.label + ' moment" class="moments__img">';
       } else {
         image.innerHTML = '';
       }
 
-      // Update dots
-      const dots = dotsWrapper.querySelectorAll('.moments__dot');
-      dots.forEach((d, i) => {
+      dotsWrapper.querySelectorAll('.moments__dot').forEach((d, i) => {
         d.classList.toggle('active', i === index);
-        const icon = d.querySelector('.moments__dot-icon');
-        icon.textContent = (i === index && isPaused) ? '▶' : (i === index ? '⏸' : '');
       });
 
-      // Trigger animations
       container.style.animation = 'none';
-      setTimeout(() => {
-        container.style.animation = 'fadeInSlide 0.6s ease-out';
-      }, 10);
+      void container.offsetWidth;
+      container.style.animation = 'fadeInSlide 0.45s ease-out';
     }
 
-    function animateCountdown(dotIndex) {
-      const dot = dotsWrapper.querySelectorAll('.moments__dot')[dotIndex];
-      if (!dot) return;
-
-      const circle = dot.querySelector('circle');
-      if (!circle) return;
-
-      circle.classList.remove('animating');
-      void circle.offsetWidth; // Trigger reflow
-      circle.classList.add('animating');
-    }
-
-    function startAutoPlay() {
-      if (isPaused) return;
-
-      clearTimeout(countdownTimeout);
-      animateCountdown(currentIndex);
-
-      autoPlayTimer = setTimeout(() => {
-        currentIndex = (currentIndex + 1) % moments.length;
-        updateContent(currentIndex);
-        startAutoPlay();
-      }, 5000);
-    }
-
-    function pauseAutoPlay() {
-      clearTimeout(autoPlayTimer);
-      clearTimeout(countdownTimeout);
-      const circle = dotsWrapper.querySelector('.moments__dot.active circle');
-      if (circle) circle.classList.remove('animating');
-    }
-
-    function goToMoment(index) {
-      currentIndex = index;
-      isPaused = true;
-      pauseAutoPlay();
+    function goTo(index) {
+      currentIndex = (index + moments.length) % moments.length;
       updateContent(currentIndex);
-
-      // Update icons
-      const dots = dotsWrapper.querySelectorAll('.moments__dot');
-      dots.forEach((d, i) => {
-        const icon = d.querySelector('.moments__dot-icon');
-        if (i === index) {
-          icon.textContent = '▶'; // Play icon when paused
-        }
-      });
     }
 
-    // Play/pause icon click
-    dotsWrapper.addEventListener('click', e => {
-      const dot = e.target.closest('.moments__dot');
-      if (!dot) return;
+    prevBtn.addEventListener('click', () => goTo(currentIndex - 1));
+    nextBtn.addEventListener('click', () => goTo(currentIndex + 1));
 
-      const icon = dot.querySelector('.moments__dot-icon');
-      if (icon && icon.textContent === '▶') {
-        // Resume
-        isPaused = false;
-        icon.textContent = '⏸';
-        startAutoPlay();
-      } else if (icon && icon.textContent === '⏸' && dot.classList.contains('active')) {
-        // Pause active
-        isPaused = true;
-        pauseAutoPlay();
-        icon.textContent = '▶';
-      }
-    });
-
-    // Desktop hover
-    container.addEventListener('mouseenter', () => {
-      pauseAutoPlay();
-      const activeDot = dotsWrapper.querySelector('.moments__dot.active');
-      if (activeDot) {
-        const icon = activeDot.querySelector('.moments__dot-icon');
-        if (icon) icon.textContent = '▶';
-      }
-    });
-
-    container.addEventListener('mouseleave', () => {
-      if (!isPaused) {
-        const activeDot = dotsWrapper.querySelector('.moments__dot.active');
-        if (activeDot) {
-          const icon = activeDot.querySelector('.moments__dot-icon');
-          if (icon) icon.textContent = '⏸';
-        }
-        startAutoPlay();
-      }
-    });
-
-    // Arrow buttons
-    prevBtn.addEventListener('click', () => {
-      currentIndex = (currentIndex - 1 + moments.length) % moments.length;
-      goToMoment(currentIndex);
-    });
-
-    nextBtn.addEventListener('click', () => {
-      currentIndex = (currentIndex + 1) % moments.length;
-      goToMoment(currentIndex);
-    });
-
-    // Initialize
     updateContent(0);
-    startAutoPlay();
   }
 
   // ── WAITLIST FORM ──────────────────────────────────
@@ -1758,9 +1579,48 @@
     initDrawer();
     initSticky();
     initMomentsCarousel();
+    initInstaLightbox();
     initForm();
     initMiniDrizzles();
   });
+
+  function initInstaLightbox() {
+    const lb      = document.getElementById('insta-lb');
+    const lbImg   = document.getElementById('insta-lb-img');
+    const lbBg    = document.getElementById('insta-lb-bg');
+    const lbClose = document.getElementById('insta-lb-close');
+
+    function open(item) {
+      const src = item.dataset.src;
+      const img = item.querySelector('img');
+      lbBg.style.background = window.getComputedStyle(item).background;
+      if (img && img.complete && img.naturalWidth > 0) {
+        lbImg.src = src;
+        lbImg.style.display = 'block';
+        lbBg.style.display  = 'none';
+      } else {
+        lbImg.style.display = 'none';
+        lbBg.style.display  = 'block';
+      }
+      lb.classList.add('open');
+      document.body.style.overflow = 'hidden';
+    }
+
+    function close() {
+      lb.classList.remove('open');
+      document.body.style.overflow = '';
+      lbImg.src = '';
+    }
+
+    document.querySelectorAll('.insta__item').forEach(item => {
+      item.addEventListener('click', () => open(item));
+    });
+
+    lbClose.addEventListener('click', close);
+    lb.addEventListener('click', e => { if (e.target === lb) close(); });
+    document.addEventListener('keydown', e => { if (e.key === 'Escape' && lb.classList.contains('open')) close(); });
+  }
+
 })();
 </script>
 

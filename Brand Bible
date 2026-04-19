@@ -1,13 +1,17 @@
-Created April 10, 2026
+
+> **About this page:** The canonical brand reference for Spoonless v2 — covering color palette, typography, visual language, voice principles, and SKU architecture. Links out to the Copy Bank for all ad copy, and to the TAM/SAM/SOM and Personas pages for market and customer context. See also: [🤥 TAM / SAM / SOM](https://www.notion.so/TAM-SAM-SOM-Market-Sizing-US-3364658cfe52815b9adedca33c432c82?pvs=21) · [🥜 Customer Personas](https://www.notion.so/Customer-Personas-3364658cfe5281b59329ef48aa250861?pvs=21) · [🔥 Visual Brand Guidelines](https://www.notion.so/VISUAL-BRAND-GUIDELINES-V2-33e4658cfe52803d9cb9eecd845e04fe?pvs=21) · [✍️ Copy Bank](https://www.notion.so/Copy-Bank-3444658cfe52816ab1fdca8166a4dcdb?pvs=21)
+> 
+
+---
 
 # Brand Identity System
 
 *Built from Pinterest mood board analysis + market positioning research · Updated April 2026 · Version 2*
 
-> **One sentence that drives every decision:** "Peanut butter finally got its act together."
+> **Hero headline (primary):** "The same peanut butter you love, designed to drizzle."
 > 
 
-Spoonless is the format upgrade peanut butter has always needed. Not a wellness product, not a kids' brand — a drizzle-first, clean-label condiment that treats itself like extra virgin olive oil treats itself. Premium without being precious. Playful without being silly. The jar is gone. The squeeze is everything.
+Spoonless is the format upgrade peanut butter has always needed. Not a wellness product, not a kids' brand — a drizzle-first, clean-label condiment that treats itself like extra virgin olive oil treats itself. Premium without being precious. Playful without being silly. The jar is gone. The squeeze is everything. For peanut butter lovers, finally. Everything you love about peanut butter, now in a drizzleable format. 
 
 ---
 
@@ -17,18 +21,17 @@ Spoonless is the format upgrade peanut butter has always needed. Not a wellness 
 
 | Dimension | Definition |
 | --- | --- |
-| Category | Premium drizzle condiment. Not the peanut butter aisle — the condiment shelf. Olive oil energy. |
-| Promise | Two ingredients. One squeeze. Zero friction. You already know how to use it — you just needed it to exist. |
-| Permission | This brand is allowed to be fun. To be surreal. To drizzle on a cheese board and mean it. No earnestness. |
+| Category | Peanut Butter reimagined as a premium drizzle condiment and more convenient version.  |
+| Promise | Simple ingredients. One squeeze. Zero friction.  |
+| Permission | This brand is allowed to be fun.  |
 
 ## What Spoonless Is (and Is Not)
 
 - **What we are** ✅
-    - A drizzle condiment that happens to be peanut butter — not the other way around
-    - Warm, editorial, and a little feral
+    - Warm, editorial, and a little unhinged
     - Delicious first. Clean label second. Never the reverse.
     - Allowed to be playful, surreal, and aesthetically ambitious
-    - Premium without being precious
+    - Premium without being pretentious
 - **What we are not** ❌
     - A wellness brand — no one should feel *virtuous* eating Spoonless. They should feel *pleased*.
     - A kids' brand — don't design for lunch boxes first. The adult eye is the primary target.
@@ -41,82 +44,29 @@ Spoonless is the format upgrade peanut butter has always needed. Not a wellness 
 
 # 02 · Color Palette
 
-*Warm, editorial, and a little feral. Drawn from the mood board: amber drips, 70s interior warmth, cream of soft-serve, retro rust and burnt orange. This is not a clean-brand-beige palette — it has teeth.*
-
-> **v2 update:** Drizzle (#C4711A) replaced by Rust (#E8622A) as primary brand accent. Ember (#C44B1B) added as depth partner. Algae and Feral demoted to named future-SKU reserves. Walnut hex corrected to #3D1F0D.
-> 
+*Warm, editorial, and a little unhinged. Drawn from the mood board: amber drips, 70s interior warmth, cream of soft-serve, retro rust and burnt orange. This is not a clean-brand-beige palette — it has teeth.*
 
 ## Primary Colors
 
+![Screenshot 2026-04-14 at 6.58.26 PM.png](attachment:0dc62314-3579-4618-8622-3d38b8c93c94:Screenshot_2026-04-14_at_6.58.26_PM.png)
+
 | Name | Hex | Usage |
 | --- | --- | --- |
-| Roast | `#1C1410` | Primary text · wordmark base · all SKUs |
-| Walnut | `#3D1F0D` | Footer depth · secondary dark · body text on cream |
-| Rust | `#E8622A` | Primary brand accent — wordmark color, stripe, wave on Original SKU · retro-burnt, shelf-popping |
-| Ember | `#C44B1B` | Depth accent — italic hero text on Original, shadow tones |
-| Golden | `#E8A020` | SKU 02 accent — Chocolate Hazelnut stripe, wave, and footer |
+| Roast | `#1C1410`  | Primary text  |
+| Walnut | `#3D1F0D` | Secondary text for depth |
+| Rust | `#E8622A` | Primary brand accent |
 | Cream | `#F5EDD8` | Universal label background · all SKUs · never changes |
-
-## Accent Colors *(reserved for future SKUs)*
-
-| Name | Hex | Intended future use |
-| --- | --- | --- |
-| Algae | `#1D7A6B` | SKU 03 reserve — honey, matcha, or earthy flavor direction |
-| Feral | `#D94F6A` | SKU 04 reserve — strawberry, spicy, or bold flavor direction |
-
-## Color System Logic
-
-- **Fixed across all SKUs:** Roast (wordmark) + Cream (label bg) — these never change
-- **Changes per SKU:** Accent stripe (top) · wave divider stroke · footer wave fill · flavor pill background
-- **Rust is always visible:** The wordmark on every SKU uses Rust, giving cross-SKU brand recognition even when the accent color shifts
-- **Shelf recognition rule:** A shopper identifies any Spoonless SKU by cream label + roast wordmark before reading a word. Accent color signals flavor, not a different brand.
-
-## Color Groups
-
-- **Structural pair (never changes):** Roast + Cream
-- **Primary brand accent:** Rust + Ember
-- **SKU 02 accent:** Golden + Dark Choc (#4A2C14)
-- **Future SKU reserves:** Algae + Feral
-
----
-
-# 02b · Label System — SKU Flavor Architecture
-
-*One label system. Infinite flavors. Zero redesigns.*
-
-## Fixed Elements (all SKUs)
-
-- Label background: Cream `#F5EDD8`
-- Brand wordmark: "SPOONLESS" in DM Sans 500 · color: Rust `#E8622A`
-- Product name hero: "peanut butter drizzle" in DM Serif Display · Roast base, italic "drizzle" in accent
-- Wave divider: SVG wavy line — stroke color changes per SKU
-- Flavor pill: positioned below wave — background + label text change per SKU
-- Tagline / descriptor: 1–2 lines in DM Serif Display italic · copy changes per SKU
-- Footer wave shape: arc fill — color changes per SKU
-- Size / info line: DM Sans Light 300 · Cream text on colored footer
-
-## Per-SKU Variables
-
-| SKU | Flavor | Stripe color | Wave + footer | Pill bg | Descriptor |
-| --- | --- | --- | --- | --- | --- |
-| 01 | Original | Rust `#E8622A` | Rust `#E8622A` | Roast `#1C1410` | *squeeze. drizzle. repeat.* |
-| 02 | Chocolate Hazelnut | Golden `#E8A020` | Golden `#E8A020` | Dark Choc `#4A2C14` | *dark, rich, a little dangerous.* |
-| 03+ | TBD | Algae or Feral | Matches stripe | Deep tone of stripe color | TBD at launch |
-
-> **Important:** "peanut butter drizzle" is the fixed product name on every SKU. Flavor identity lives only in the flavor pill (e.g. "Chocolate · Hazelnut", "Original"). The hero typography does not change between SKUs.
-> 
 
 ---
 
 # 03 · Typography
 
-*Two fonts. One rule: the serif flirts, the sans delivers.*
+*work in progress*
 
 ## Display Font — DM Serif Display
 
 - Use for: headlines, hero moments, editorial callouts
-- Use italic liberally — it's the personality
-- Example usage: *"Pour it. Mean it."*
+- Use italic liberally — it's the personality (like “drizzle”)
 
 ## Body Font — DM Sans Light / Regular
 
@@ -156,7 +106,7 @@ Spoonless is the format upgrade peanut butter has always needed. Not a wellness 
 | --- | --- |
 | Confident, not arrogant | "We didn't reinvent peanut butter." We just made it make sense as a topping. |
 | Playful, not silly | Wit is always in service of appetite. Never in service of a joke. |
-| Clean, not clinical | "Two ingredients." Not "a simple, clean, whole-food snacking solution with minimal processing." |
+| Clean, not clinical | "Simple ingredients." Not "Clean, whole-food snacking solution with minimal processing." |
 | Premium, no preaching | No macros in the headline. No lecturing. Lead with desire. |
 
 ## Words We Never Say
@@ -168,87 +118,24 @@ Spoonless is the format upgrade peanut butter has always needed. Not a wellness 
 
 # 06 · Copy by Persona
 
-*Same product. Three different doors.*
+All approved copy lines live in the [✍️ Copy Bank](https://www.notion.so/Copy-Bank-3444658cfe52816ab1fdca8166a4dcdb?pvs=21). Reference that page for the full set of persona-specific lines, hero alternates, and banned words.
 
-## The Ritual Optimizer *(TikTok / DTC)*
-
-- Core tension: indulgence vs. performance
-- Ad tone: clinical-cool, proof-forward
-- Best lines:
-    - *"No jar. No knife. No negotiating with the lid."*
-    - *"Peanut butter, optimized."*
-    - *"The only thing we added was the squeeze top."*
-    - *"Two ingredients. One squeeze. Every morning."*
-
-## The Considered Indulger *(Instagram / Specialty Retail)*
-
-- Core tension: pleasure vs. integrity
-- Ad tone: sensory, playful, zero health preaching
-- Best lines:
-    - *"Finally, peanut butter that knows it's a topping."*
-    - *"It's not health food. It's just really good peanut butter."*
-    - *"For people who take Sunday mornings seriously."*
-    - *"Your waffle called. It wants this."*
-
-## The Standard-Keeper *(Amazon / Instacart)*
-
-- Core tension: speed vs. quality
-- Ad tone: utility-forward, zero condescension
-- Best lines:
-    - *"Lunch boxes, smoothies, waffles. One squeeze."*
-    - *"No more sticky lids. No more knives in the sink."*
-    - *"Clean label. Zero mess. Every morning."*
-    - *"Subscribe and never think about it again."*
-
-## Universal (any channel)
-
-> *"Peanut butter, optimized."*
-> 
+*Same product. Three different doors — Ritual Optimizer (TikTok/DTC) · Considered Indulger (Instagram/Specialty Retail) · Standard-Keeper (Amazon/Instacart).*
 
 ---
 
 # 07 · Market Context
 
-| Metric | Value |
-| --- | --- |
-| TAM (US peanut butter market, 2025) | $1.7B |
-| SAM (premium, drizzleable, clean-label) | $400M |
-| SOM — base case (Year 3–5) | $11M |
-| SOM range | $6M – $21M |
+See full analysis: [🥜 TAM / SAM / SOM Market Sizing (US)](https://www.notion.so/TAM-SAM-SOM-Market-Sizing-US-3364658cfe52815b9adedca33c432c82?pvs=21)
 
-*Sources: IMARC Group · IBISWorld · PS Market Research · Ingredion Consumer Insights (2025)*
+**Key numbers:** TAM $1.7B · SAM $400M · SOM $11M base case ($6M–$21M range)
 
 ---
 
 # 08 · Strategic Persona Roles
 
-| Persona | Strategic Role | Why |
-| --- | --- | --- |
-| Ritual Optimizer | Win first | They write the Reddit threads and TikToks that Personas 2 and 3 find later. Credibility infrastructure. |
-| Considered Indulger | Scale with | Highest WOM coefficient. Respond to aesthetic and occasion marketing. Bottle design must do heavy lifting. |
-| Standard-Keeper | Retain via | Once locked in via Subscribe & Save, they send 3–5 referrals unprompted. Path runs through Amazon, Instacart, and parenting communities. |
+See full behavioral profiles: [🥜 Customer Personas](https://www.notion.so/Customer-Personas-3364658cfe5281b59329ef48aa250861?pvs=21)
+
+**Summary:** Ritual Optimizer (win first · credibility) → Considered Indulger (scale · WOM) → Standard-Keeper (retain · Subscribe & Save)
 
 ---
-
----
-
-# 09 · Change Log
-
-## v1 → v2 (April 2026)
-
-| Area | Change | Rationale |
-| --- | --- | --- |
-| Palette | Drizzle `#C4711A` → **Rust `#E8622A`** as primary accent | Deeper, more saturated retro-burnt tone. More shelf presence. Truer to 70s interior warmth in mood board. |
-| Palette | Added **Ember `#C44B1B`** as depth partner to Rust | Needed a darker warm tone for italic hero text and shadow moments without going full Roast. |
-| Palette | Walnut hex corrected: `#4A2C14` → `#3D1F0D` | Truer mid-dark brown for body text on cream; prior value was too close to Dark Choc. |
-| Palette | Golden `#E8A020` promoted to SKU 02 accent role | No longer a general highlight color — now owns the Chocolate Hazelnut SKU identity specifically. |
-| Palette | Algae + Feral demoted from "use sparingly" to future-SKU reserves | Keeps the active palette tight (2 warm accent tones). Both colors preserved in system for SKU 03/04. |
-| Label system | Added formal SKU flavor architecture (Section 02b) | Codifies exactly what changes vs. stays fixed per SKU. Enables scale without redesign. |
-| Label system | Chocolate Hazelnut: product name locked to "peanut butter drizzle" | Flavor identity (Chocolate · Hazelnut) lives in pill only. Hero type is identical across all SKUs. |
-| Label system | Cream label background now universal — no dark-background SKU variant | Cohesion over differentiation at the label level. Color accent does enough SKU-differentiating work. |
-| Voice | "Never say" list expanded: added Plant-based, Mindful | Closes loopholes as wellness-adjacent language creeps into food marketing. |
-| Carried over | All v1 elements unchanged | DM Serif Display + DM Sans pairing · all voice principles · all persona copy · all guardrails · brand essence. |
-
----
-
-*Spoonless Brand Identity System · Version 2 · April 2026 · Based on Pinterest mood board analysis, TAM/SAM/SOM research, and customer persona segmentation*
