@@ -183,8 +183,8 @@
       position: fixed; inset: 0; z-index: 99;
       background: var(--roast);
       display: flex; flex-direction: column;
-      align-items: center; justify-content: center; gap: 2rem;
-      padding: 5rem 2rem 3rem;
+      align-items: flex-start; justify-content: flex-start; gap: 2rem;
+      padding: calc(var(--nav-h) + 2.5rem) 2rem 3rem clamp(1.5rem, 6vw, 3rem);
       transform: translateX(100%);
       transition: transform 0.4s cubic-bezier(0.4, 0, 0.2, 1);
     }
@@ -195,6 +195,13 @@
       transition: color 0.2s;
     }
     .drawer a:hover { color: var(--rust); }
+    .drawer__close {
+      position: absolute; top: 1.1rem; right: 1.25rem;
+      background: none; border: none; color: var(--cream);
+      font-size: 2rem; line-height: 1; cursor: pointer;
+      padding: 0.25rem 0.5rem; opacity: 0.7; transition: opacity 0.2s;
+    }
+    .drawer__close:hover { opacity: 1; }
 
     /* ─────────────────────────────────────────
        HERO
@@ -882,9 +889,9 @@
   <a href="#" class="nav__logo">Spoonless</a>
 
   <div class="nav__links">
-    <a href="#products">Products</a>
-    <a href="#society">Our Story</a>
-    <a href="#waitlist">Waitlist</a>
+    <a href="#">Home</a>
+    <a href="#products">Shop</a>
+    <a href="#waitlist">Contact</a>
   </div>
 
   <div class="nav__right">
@@ -897,10 +904,11 @@
 
   <!-- mobile drawer (inside nav for class toggling) -->
   <div class="drawer" id="drawer" aria-hidden="true">
-    <a href="#products" class="d-link">Products</a>
-    <a href="#society"  class="d-link">Our Story</a>
-    <a href="#waitlist" class="d-link">Waitlist</a>
-    <a href="#waitlist" class="btn btn-rust btn-lg" style="margin-top:1rem;">Join the Waitlist</a>
+    <button class="drawer__close" id="drawer-close" aria-label="Close menu">×</button>
+    <a href="#"          class="d-link">Home</a>
+    <a href="#products"  class="d-link">Shop</a>
+    <a href="#waitlist"  class="d-link">Contact</a>
+    <a href="#waitlist"  class="btn btn-rust btn-lg" style="margin-top:1rem;">Join the Waitlist</a>
   </div>
 </nav>
 
@@ -1423,6 +1431,7 @@
     });
 
     drawer.querySelectorAll('a').forEach(a => a.addEventListener('click', close));
+    document.getElementById('drawer-close').addEventListener('click', close);
 
     document.addEventListener('keydown', e => {
       if (e.key === 'Escape' && nav.classList.contains('open')) {
