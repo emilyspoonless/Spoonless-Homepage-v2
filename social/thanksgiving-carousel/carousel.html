@@ -1,0 +1,307 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>Spoonless Thanksgiving Carousel</title>
+<!--
+  SPOONLESS · "The Thanksgiving Issue" — 7-slide Instagram carousel (1080 × 1350)
+  Editable source. Every slide is a <section class="slide">. Copy is plain text in the markup.
+  Photo crops are controlled by the --x / --y / --s custom properties on each .ph element:
+    --s  = rendered image width as % of the frame (zoom)
+    --x  = horizontal focus (0% left … 100% right)
+    --y  = vertical focus   (0% top  … 100% bottom)
+  Export: `node export.js` → export/*.png + export/contact-sheet.png
+-->
+<link rel="stylesheet" href="fonts/fonts.css">
+<style>
+  /* Display face: Gillius ADF (GPL+font exception) — closest open match to the humanist
+     Gill-style sans shown in the Spoonless typeface guidelines (mislabelled "Roca" in the doc). */
+  @font-face{font-family:'Spoonless Display';src:url(fonts/GilliusADF-Bold.otf) format('opentype');font-weight:700}
+  @font-face{font-family:'Spoonless Display';src:url(fonts/GilliusADF-BoldItalic.otf) format('opentype');font-weight:700;font-style:italic}
+  @font-face{font-family:'Spoonless Display';src:url(fonts/GilliusADF-Regular.otf) format('opentype');font-weight:400}
+</style>
+<style>
+  :root{
+    /* Spoonless brand palette (guidelines §03) */
+    --cream:#F9F8EB;      /* Cream  */
+    --terra:#D86641;      /* Orange — primary */
+    --esp:#231F20;        /* Black  */
+    --walnut:#9F5542;     /* Brown  */
+    /* photo-derived supporting tints */
+    --cream-2:#F1E9D6;
+    --terra-deep:#B44E2E;
+    --butter:#E7B277;
+    --cran:#8E1B2C;
+    --serif:'Spoonless Display','Gill Sans','Gill Sans MT',sans-serif;
+    --sans:'DM Sans', system-ui, sans-serif;
+    --m:72px;                 /* outer margin / safe area */
+  }
+  *{box-sizing:border-box;margin:0;padding:0}
+  body{background:#d9d2c3;font-family:var(--sans);color:var(--esp);
+       display:flex;flex-direction:column;align-items:center;gap:40px;padding:40px 0;
+       -webkit-font-smoothing:antialiased;text-rendering:geometricPrecision}
+
+  .slide{width:1080px;height:1350px;position:relative;overflow:hidden;background:var(--cream);flex:none}
+
+  /* ---------- photo frame ---------- */
+  .ph{position:absolute;overflow:hidden;background:var(--cream-2)}
+  .ph img{position:absolute;width:var(--s,100%);height:auto;
+          left:calc((100% - var(--s,100%)) * var(--x,50%) / 100%);
+          top:0;display:block}
+  /* vertical focus is applied in JS (needs rendered height) */
+
+  /* ---------- type system ---------- */
+  .meta{position:absolute;left:var(--m);right:var(--m);display:flex;justify-content:space-between;
+        align-items:center;font:500 21px/1 var(--sans);letter-spacing:.22em;text-transform:uppercase}
+  .wm{color:var(--terra)}
+  .num{font:500 21px/1 var(--sans);letter-spacing:.12em}
+  .num i{font-style:italic;opacity:.55;padding:0 .25em}
+  .h{font-family:var(--serif);font-weight:700;letter-spacing:-.006em;line-height:.9;-webkit-text-stroke:.018em currentColor;paint-order:stroke fill;font-feature-settings:'liga' 0,'dlig' 0,'clig' 0,'hlig' 0,'calt' 0;font-variant-ligatures:none}
+  .h em{font-style:normal;color:var(--terra)}
+  .kicker{font:500 19px/1 var(--sans);letter-spacing:.22em;text-transform:uppercase;color:var(--terra)}
+  .dish{font:500 29px/1.22 var(--sans);letter-spacing:-.005em}
+  .sup{font:300 29px/1.35 var(--sans)}
+  .fit{white-space:nowrap;display:block;width:max-content;max-width:none}
+  .tile{background:var(--terra);display:grid;place-items:center;color:var(--cream);text-align:center;font:700 40px/.95 var(--serif);-webkit-text-stroke:.02em currentColor}
+  .tile small{display:block;font:500 15px/1 var(--sans);letter-spacing:.22em;text-transform:uppercase;-webkit-text-stroke:0;margin-top:12px}
+  body *{font-variant-ligatures:none}
+  .rule{height:2px;background:currentColor;opacity:.9}
+
+  /* sticker — the one recurring 70s flourish */
+  .sticker{position:absolute;border-radius:50%;display:grid;place-items:center;text-align:center}
+  .sticker svg{position:absolute;inset:0;width:100%;height:100%;overflow:visible}
+  .sticker text{font:500 15.5px var(--sans);letter-spacing:.26em;text-transform:uppercase}
+  .sticker .core{font:700 40px/0.92 var(--serif);position:relative;-webkit-text-stroke:.02em currentColor;letter-spacing:-.01em}
+
+  /* ======================= 01 COVER ======================= */
+  .s1 .meta{top:58px;color:var(--esp)}
+  .s1 .meta span:nth-child(2){font-weight:400;letter-spacing:.2em;color:var(--walnut)}
+  .s1 .toprule{position:absolute;left:var(--m);right:var(--m);top:96px;height:2px;background:var(--esp)}
+  .s1 .head{position:absolute;left:var(--m);right:var(--m);top:128px}
+  .s1 .l1{font:700 62px/1 var(--serif);letter-spacing:-.01em;-webkit-text-stroke:.018em currentColor}
+  .s1 .l1 .six{display:inline-grid;place-items:center;width:84px;height:84px;border-radius:50%;
+               background:var(--terra);color:var(--cream);font-size:60px;line-height:1;margin-right:14px;font-weight:700;
+               vertical-align:-14px;padding-bottom:6px}
+  .s1 .l2{font:700 160px/.86 var(--serif);color:var(--terra);letter-spacing:-.035em;margin:18px 0 0 -8px;-webkit-text-stroke:.024em currentColor}
+  .s1 .l3{font:700 126px/.9 var(--serif);letter-spacing:-.03em;margin-left:-5px;-webkit-text-stroke:.024em currentColor}
+  .s1 .subrow{position:absolute;left:var(--m);right:var(--m);top:520px;display:flex;
+              justify-content:space-between;align-items:baseline}
+  .s1 .subrow .sup{font-size:27px;color:var(--walnut)}
+  .s1 .subrow .sup em{font-style:normal;font-weight:500;color:var(--terra)}
+  .s1 .swipe{font:500 19px/1 var(--sans);letter-spacing:.22em;text-transform:uppercase;color:var(--esp)}
+  .s1 .grid .ph{border-radius:4px}
+  .s1 .arch{border-radius:228px 228px 4px 4px !important}
+
+  /* ======================= 02 BRUSSELS (photo top, cream panel) ======================= */
+  .s2 .panel{position:absolute;left:0;right:0;bottom:0;height:356px;background:var(--cream)}
+  .s2 .h{position:absolute;left:var(--m);top:52px;font-size:104px}
+  .s2 .info{position:absolute;left:var(--m);right:var(--m);top:178px;display:grid;
+            grid-template-columns:1fr 1fr;gap:0 48px;align-items:start}
+  .s2 .info .rule{grid-column:1/-1;margin-bottom:22px;opacity:.2}
+  .s2 .meta{bottom:44px;color:var(--esp)}
+
+  /* ======================= 03 SWEET POTATO (terracotta + arch) ======================= */
+  .s3{background:var(--terra);color:var(--cream)}
+  .s3 .meta{top:58px}
+  .s3 .meta .wm{color:var(--cream)}
+  .s3 .h{position:absolute;left:var(--m);right:var(--m);top:124px;font-size:112px;text-align:center;display:flex;flex-direction:column;align-items:center;color:var(--cream)}
+  .s3 .h em{color:var(--esp)}
+  .s3 .archframe{left:122px;top:376px;width:836px;height:782px;border-radius:418px 418px 0 0}
+  .s3 .foot{position:absolute;left:var(--m);right:var(--m);top:1186px;text-align:center}
+  .s3 .foot .dish{color:var(--cream)}
+  .s3 .foot .sup{color:var(--cream);opacity:.88;margin-top:8px;font-size:27px}
+  .s3 .placeholder{position:absolute;inset:0;display:grid;place-items:center;color:var(--terra-deep);
+       font:500 20px/1.4 var(--sans);letter-spacing:.2em;text-transform:uppercase;text-align:center;
+       background:repeating-linear-gradient(135deg,var(--cream-2) 0 18px,var(--cream) 18px 36px)}
+
+  /* ======================= 04 PUMPKIN PIE (headline top, photo bottom) ======================= */
+  .s4 .meta{top:58px}
+  .s4 .h{position:absolute;left:var(--m);top:112px;font-size:128px}
+  .s4 .h .l2{display:block;padding-left:178px;margin-top:4px}
+  .s4 .tag{position:absolute;left:var(--m);bottom:var(--m);width:470px;background:var(--cream);
+           padding:30px 34px 32px;border-radius:4px}
+  .s4 .tag .kicker{margin-bottom:14px}
+  .s4 .tag .sup{margin-top:10px;font-size:26px;color:var(--walnut)}
+
+  /* ======================= 05 APPLE CRISP (espresso, inset) ======================= */
+  .s5{background:var(--esp);color:var(--cream)}
+  .s5 .meta{top:58px}
+  .s5 .meta .wm{color:var(--butter)}
+  .s5 .h{position:absolute;left:var(--m);top:122px;font-size:118px;color:var(--cream)}
+  .s5 .h em{color:var(--butter)}
+  .s5 .inset{left:var(--m);right:var(--m);top:370px;height:760px;border-radius:4px}
+  .s5 .foot{position:absolute;left:var(--m);right:var(--m);top:1160px;display:grid;
+            grid-template-columns:1.05fr 1fr;gap:40px}
+  .s5 .dish{color:var(--cream)}
+  .s5 .sup{color:var(--butter);font-size:28px}
+
+  /* ======================= 06 WAFFLES (photo top, terracotta panel) ======================= */
+  .s6 .panel{position:absolute;left:0;right:0;bottom:0;height:446px;background:var(--terra);color:var(--cream)}
+  .s6 .h{position:absolute;left:var(--m);right:var(--m);top:50px;font-size:92px;color:var(--cream);line-height:.96}
+  .s6 .h em{color:var(--esp)}
+  .s6 .info{position:absolute;left:var(--m);right:var(--m);top:240px;display:grid;
+            grid-template-columns:1.12fr 1fr;gap:44px}
+  .s6 .meta{bottom:40px}
+  .s6 .meta .wm{color:var(--cream)}
+
+  /* ======================= 07 SMOOTHIE BOWL (headline top, photo bottom, CTA) ======================= */
+  .s7 .meta{top:58px}
+  .s7 .h{position:absolute;left:var(--m);right:var(--m);top:112px;font-size:150px}
+  .s7 .h .l1{display:block;font-size:72px;line-height:1;margin-bottom:6px}
+  .s7 .h .l2{display:block}
+  .s7 .cta{position:absolute;left:var(--m);right:var(--m);bottom:var(--m);display:flex;
+           justify-content:space-between;align-items:stretch;gap:16px}
+  .s7 .card{background:var(--cream);border-radius:4px;padding:26px 30px;flex:1}
+  .s7 .card .sup{font-size:25px;color:var(--walnut);margin-top:8px}
+  .s7 .ask{background:var(--terra);color:var(--cream);border-radius:4px;padding:26px 30px;width:330px;
+           display:flex;flex-direction:column;justify-content:space-between}
+  .s7 .ask .q{font:700 40px/1 var(--serif);-webkit-text-stroke:.018em currentColor}
+  .s7 .ask .handle{font:500 19px/1 var(--sans);letter-spacing:.16em;margin-top:18px}
+</style>
+</head>
+<body>
+
+<!-- ============================ 01 · COVER ============================ -->
+<section class="slide s1" id="s1">
+  <div class="meta"><span class="wm">Spoonless</span><span>The Thanksgiving Issue</span><span class="num">Nov 2026</span></div>
+  <div class="toprule"></div>
+  <div class="head">
+    <div class="l1 fit"><span class="six">6</span>unexpected ways to bring</div>
+    <div class="l2 fit">peanut butter</div>
+    <div class="l3 fit">to Thanksgiving.</div>
+  </div>
+  <div class="subrow">
+    <p class="sup">Your table could use a little <em>Spoonless.</em></p>
+    <span class="swipe">Swipe &nbsp;→</span>
+  </div>
+  <div class="grid">
+    <!-- grid: x 72–1008, y 584–1278 -->
+    <div class="ph arch" style="left:72px;top:584px;width:456px;height:694px;--s:205%;--x:42%;--y:48%"><img src="img/pie.jpg" alt=""></div>
+    <div class="ph" style="left:540px;top:584px;width:468px;height:222px;--s:150%;--x:55%;--y:52%"><img src="img/crisp.jpg" alt=""></div>
+    <div class="ph" style="left:540px;top:818px;width:228px;height:222px;--s:205%;--x:62%;--y:42%"><img src="img/sweet-potato.jpg" alt="" data-fallback="img/brussels.jpg"></div>
+    <div class="ph" style="left:780px;top:818px;width:228px;height:222px;--s:205%;--x:62%;--y:52%"><img src="img/waffles.jpg" alt=""></div>
+    <div class="ph" style="left:540px;top:1052px;width:228px;height:226px;--s:205%;--x:48%;--y:44%"><img src="img/brussels.jpg" alt=""></div>
+    <div class="ph" style="left:780px;top:1052px;width:228px;height:226px;--s:185%;--x:50%;--y:52%"><img src="img/smoothie.jpg" alt=""></div>
+  </div>
+  <div class="sticker" style="left:436px;top:598px;width:188px;height:188px;background:var(--esp);color:var(--cream);transform:rotate(-10deg)">
+    <svg viewBox="0 0 188 188"><defs><path id="c1" d="M94,94 m-72,0 a72,72 0 1,1 144,0 a72,72 0 1,1 -144,0"/></defs>
+      <text fill="#F9F8EB"><textPath href="#c1">zero spoons required · zero spoons required ·</textPath></text></svg>
+    <span class="core" style="color:var(--butter);font-size:34px">Six<br>ways</span>
+  </div>
+</section>
+
+<!-- ============================ 02 · BRUSSELS ============================ -->
+<section class="slide s2" id="s2">
+  <div class="ph" style="left:0;top:0;width:1080px;height:994px;--s:100%;--x:50%;--y:30%"><img src="img/brussels.jpg" alt=""></div>
+  <div class="panel">
+    <h2 class="h">Brussels, <em>but better.</em></h2>
+    <div class="info">
+      <div class="rule"></div>
+      <p class="dish">Crispy Brussels sprouts with peanut-chili-lime drizzle</p>
+      <p class="sup">Crispy, spicy, tangy, and just a little nutty.</p>
+    </div>
+    <div class="meta"><span class="wm">Spoonless</span><span class="num">01 <i>/</i> 06</span></div>
+  </div>
+</section>
+
+<!-- ============================ 03 · SWEET POTATOES ============================ -->
+<section class="slide s3" id="s3">
+  <div class="meta"><span class="wm">Spoonless</span><span class="num">02 <i>/</i> 06</span></div>
+  <h2 class="h"><span class="fit">Sweet potat<span style="letter-spacing:.035em">o</span>es,</span><em class="fit">meet miso.</em></h2>
+  <div class="ph archframe" style="--s:118%;--x:52%;--y:40%">
+    <div class="placeholder">Photo slot<br>img/sweet-potato.jpg</div>
+    <img src="img/sweet-potato.jpg" alt="" onerror="this.remove()">
+  </div>
+  <div class="foot">
+    <p class="dish">Roasted Japanese sweet potatoes with miso-peanut drizzle</p>
+    <p class="sup">Sweet, savory, and finished with a little drizzle.</p>
+  </div>
+</section>
+
+<!-- ============================ 04 · PUMPKIN PIE ============================ -->
+<section class="slide s4" id="s4">
+  <div class="meta"><span class="wm">Spoonless</span><span class="num">03 <i>/</i> 06</span></div>
+  <div class="ph" style="left:0;top:404px;width:1080px;height:946px;--s:104%;--x:40%;--y:24%"><img src="img/pie.jpg" alt=""></div>
+  <h2 class="h"><span>Pumpkin pie,</span><span class="l2"><em>upgraded.</em></span></h2>
+  <div class="tag">
+    <p class="kicker">On the plate</p>
+    <p class="dish">Pumpkin pie with whipped cream &amp; Spoonless drizzle</p>
+    <p class="sup">A Thanksgiving classic with an unexpected finishing touch.</p>
+  </div>
+</section>
+
+<!-- ============================ 05 · APPLE CRISP ============================ -->
+<section class="slide s5" id="s5">
+  <div class="meta"><span class="wm">Spoonless</span><span class="num">04 <i>/</i> 06</span></div>
+  <h2 class="h">Apple crisp’s<br><em>new obsession.</em></h2>
+  <div class="ph inset" style="--s:100%;--x:50%;--y:44%"><img src="img/crisp.jpg" alt=""></div>
+  <div class="foot">
+    <p class="dish">Warm apple crisp with vanilla ice cream &amp; peanut butter drizzle</p>
+    <p class="sup">Warm apples. Cold ice cream. A <b style="font-weight:600">very</b> good drizzle.</p>
+  </div>
+</section>
+
+<!-- ============================ 06 · BLACK FRIDAY WAFFLES ============================ -->
+<section class="slide s6" id="s6">
+  <div class="ph" style="left:0;top:0;width:1080px;height:904px;--s:100%;--x:50%;--y:40%"><img src="img/waffles.jpg" alt=""></div>
+  <div class="sticker" style="right:58px;top:52px;width:196px;height:196px;background:var(--cran);color:var(--cream);transform:rotate(9deg)">
+    <svg viewBox="0 0 196 196"><defs><path id="c6" d="M98,98 m-76,0 a76,76 0 1,1 152,0 a76,76 0 1,1 -152,0"/></defs>
+      <text fill="#F9F8EB"><textPath href="#c6">black friday breakfast · black friday breakfast ·</textPath></text></svg>
+    <span class="core" style="font-size:36px">PB&amp;J,<br>kinda</span>
+  </div>
+  <div class="panel">
+    <h2 class="h"><span class="fit">Yesterday’s cranberries.</span><em class="fit">Today’s breakfast.</em></h2>
+    <div class="info">
+      <p class="dish">Black Friday waffles with cranberry sauce, Greek yogurt &amp; Spoonless</p>
+      <p class="sup">Think PB&amp;J, but make it Thanksgiving leftovers.</p>
+    </div>
+    <div class="meta"><span class="wm">Spoonless</span><span class="num">05 <i>/</i> 06</span></div>
+  </div>
+</section>
+
+<!-- ============================ 07 · PUMPKIN PIE SMOOTHIE BOWL ============================ -->
+<section class="slide s7" id="s7">
+  <div class="meta"><span class="wm">Spoonless</span><span class="num">06 <i>/</i> 06</span></div>
+  <div class="ph" style="left:0;top:404px;width:1080px;height:946px;--s:100%;--x:50%;--y:34%"><img src="img/smoothie.jpg" alt=""></div>
+  <h2 class="h"><span class="l1 fit">Pumpkin pie for breakfast?</span><span class="l2"><em>Obviously.</em></span></h2>
+  <div class="cta">
+    <div class="card">
+      <p class="dish">Pumpkin pie smoothie bowl with granola &amp; Spoonless</p>
+      <p class="sup">All the cozy Thanksgiving flavors, with a lighter morning-after twist.</p>
+    </div>
+    <div class="ask">
+      <p class="q">Which one are you trying first?</p>
+      <p class="handle">@GOSPOONLESS</p>
+    </div>
+  </div>
+</section>
+
+<script>
+  // vertical focus: shift image so --y maps 0%→top aligned, 100%→bottom aligned
+  function place(){
+    document.querySelectorAll('.ph img').forEach(img=>{
+      const f=img.parentElement, cs=getComputedStyle(f);
+      const y=parseFloat(cs.getPropertyValue('--y'))||50;
+      const over=img.offsetHeight-f.clientHeight;
+      img.style.top=(-over*y/100)+'px';
+    });
+  }
+  // cover tile: if the sweet potato file is missing, fall back so the grid never shows a hole
+  function fallback(){
+    document.querySelectorAll('img[data-fallback]').forEach(img=>{
+      if(img.complete && img.naturalWidth>0) return;
+      const f=img.parentElement;f.classList.add('tile');f.innerHTML='<div>+ one<br>more<small>Swipe to see</small></div>';
+    });
+  }
+  // shrink any .fit line until it fits its container width
+  function fit(){
+    document.querySelectorAll('.fit').forEach(el=>{
+      const box=el.closest('.h,.head')||el.parentElement, max=box.clientWidth;
+      let fs=parseFloat(getComputedStyle(el).fontSize);
+      while(el.offsetWidth>max && fs>20){fs-=1;el.style.fontSize=fs+'px'}
+    });
+  }
+  window.addEventListener('load',async()=>{await document.fonts.ready;fallback();fit();place();document.body.dataset.ready='1'});
+</script>
+</body>
+</html>
