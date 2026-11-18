@@ -19,9 +19,9 @@ const names = ['01-cover', '02-brussels-sprouts', '03-japanese-sweet-potatoes', 
   const imgs = names.map(n => 'export/' + n + '.png');
   const sheet = await browser.newPage({ viewport: { width: 2400, height: 1400 }, deviceScaleFactor: 1 });
   await sheet.setContent(`<!doctype html><html><head><link rel="stylesheet" href="fonts/fonts.css"><style>@font-face{font-family:'Spoonless Display';src:url(fonts/GilliusADF-Bold.otf)}
-    body{margin:0;background:#ECE7D6;font-family:'DM Sans';color:#231F20;padding:64px 72px 72px;width:2256px}
-    header{display:flex;justify-content:space-between;align-items:baseline;border-bottom:2px solid #231F20;padding-bottom:18px;margin-bottom:40px}
-    h1{font:700 56px 'Spoonless Display';margin:0;-webkit-text-stroke:1px currentColor} h1 em{color:#D86641}
+    body{margin:0;background:#ECE7D6;font-family:'DM Sans';color:#1C1A1B;padding:64px 72px 72px;width:2256px}
+    header{display:flex;justify-content:space-between;align-items:baseline;border-bottom:2px solid #1C1A1B;padding-bottom:18px;margin-bottom:40px}
+    h1{font:700 56px 'Spoonless Display';margin:0;-webkit-text-stroke:1px currentColor} h1 em{color:#DA3A32}
     header span{font:500 18px 'DM Sans';letter-spacing:.22em;text-transform:uppercase}
     .row{display:grid;grid-template-columns:repeat(4,1fr);gap:36px}
     figure{margin:0} img{width:100%;display:block;box-shadow:0 12px 30px rgba(35,31,32,.16)}
