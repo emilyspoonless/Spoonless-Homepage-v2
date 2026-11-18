@@ -14,8 +14,7 @@ node export.js
 ```
 
 ## Sweet potato photo
-Save the Japanese sweet potato photo as `img/sweet-potato.jpg` and run `node export.js`.
-Slide 03 fills its arch frame, and the cover's orange "+ one more" tile turns into the photo automatically.
+The sweet potato photo is in `img/sweet-potato.jpg`. To swap it, replace that file and run `node export.js`.
 
 ## Design system
 - Palette (brand guidelines §03, matched to the swatches as shown): Cream #F9F8EB · Red #DA3A32 · Black #1C1A1B · Brown (oxblood) #3A1D21.
@@ -27,3 +26,10 @@ Slide 03 fills its arch frame, and the cover's orange "+ one more" tile turns in
 - Body type: DM Sans 300/500, as used in the guidelines.
 - Crops: on each `.ph`, `--s` sets the zoom, and `--x` / `--y` set where the crop centres.
 - Headline lines marked `.fit` shrink automatically to stay inside the 72px safe margin.
+
+## Editable PDFs (for Canva)
+- `node export-pdf.js`: all 7 slides → `export/spoonless-thanksgiving-carousel.pdf`
+- `node export-pdf.js 3`: one slide → `export/slide-03.pdf`
+
+In Canva: Upload → choose the PDF → open it. The text stays editable.
+Note: the bundled Gillius fonts have their automatic "oe" ligature removed so "potatoes" never renders as "potatœs".
